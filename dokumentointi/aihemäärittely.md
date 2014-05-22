@@ -4,5 +4,9 @@
 
 **Käyttäjät:** Pelaaja.
 
-**Pelaajan toiminnot:** Heitä noppaa.
-
+**Toiminnot:**
+- Aloita/lopeta peli
+- Heitä noppia (yhteensä kolme kertaa)
+- Lukitse noppia (ensimmäisellä ja toisella heittokerralla)
+- Valitse pisteet (kolmannen heittokerran jälkeen)
+- High score -lista (päivittyy automaattisesti)

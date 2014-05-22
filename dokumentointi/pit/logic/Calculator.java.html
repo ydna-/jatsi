@@ -1,0 +1,2829 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+border: 1px solid #dddddd;
+padding-top: 10px;
+padding-right: 5px;
+padding-left: 5px;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>Calculator.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_1'/>
+1
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_1'></a>
+</td>
+<td class=''><pre><span  class=''>package logic;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_2'/>
+2
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_2'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_3'/>
+3
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_3'></a>
+</td>
+<td class=''><pre><span  class=''>import java.util.Arrays;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_4'/>
+4
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_4'></a>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_5'/>
+5
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_5'></a>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_6'/>
+6
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_6'></a>
+</td>
+<td class=''><pre><span  class=''> * Luokka tarjoaa metodin pelaajan pisteiden laskemiseen eri noppayhdistelmill&#228;.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_7'/>
+7
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_7'></a>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_8'/>
+8
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_8'></a>
+</td>
+<td class='uncovered'><pre><span  class=''>public class Calculator {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_9'/>
+9
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_9'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_10'/>
+10
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_10'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee pelaajan saamat pisteet tietyll&#228; noppayhdistelm&#228;ll&#228;.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_11'/>
+11
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_11'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_12'/>
+12
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_12'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param combination noppayhdistelm&#228;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_13'/>
+13
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_13'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_14'/>
+14
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_14'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_15'/>
+15
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_15'></a>
+</td>
+<td class=''><pre><span  class=''>    public static int count(int[] dice, String combination) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_16'/>
+16
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_16'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        Arrays.sort(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_17'/>
+17
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_17'>15</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        switch (combination) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_18'/>
+18
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_18'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;ones&#34;: return countDice(dice, 1);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_19'/>
+19
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_19'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;twos&#34;: return countDice(dice, 2);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_20'/>
+20
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_20'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;threes&#34;: return countDice(dice, 3);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_21'/>
+21
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_21'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;fours&#34;: return countDice(dice, 4);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_22'/>
+22
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_22'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;fives&#34;: return countDice(dice, 5);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_23'/>
+23
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_23'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;sixes&#34;: return countDice(dice, 6);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_24'/>
+24
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_24'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;pair&#34;: return countPair(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_25'/>
+25
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_25'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;two pairs&#34;: return countTwoPairs(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_26'/>
+26
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_26'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;three of a kind&#34;: return countThreeOfAKind(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_27'/>
+27
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_27'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;four of a kind&#34;: return countFourOfAKind(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_28'/>
+28
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_28'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;small straight&#34;: return countSmallStraight(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_29'/>
+29
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_29'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;large straight&#34;: return countLargeStraight(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_30'/>
+30
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_30'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;full house&#34;: return countFullHouse(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_31'/>
+31
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_31'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;chance&#34;: return countChance(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_32'/>
+32
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_32'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            case &#34;yatzy&#34;: return countYatzy(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_33'/>
+33
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_33'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_34'/>
+34
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_34'>1</a>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_35'/>
+35
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_35'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_36'/>
+36
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_36'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_37'/>
+37
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_37'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee ykk&#246;sist&#228;, kakkosista, kolmosista, nelosista, viitosista ja kuutosista saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_38'/>
+38
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_38'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_39'/>
+39
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_39'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param number noppayhdistelm&#228;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_40'/>
+40
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_40'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_41'/>
+41
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_41'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_42'/>
+42
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_42'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countDice(int[] dice, int number) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_43'/>
+43
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_43'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_44'/>
+44
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_44'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_45'/>
+45
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_45'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] == number) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_46'/>
+46
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_46'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                score += number;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_47'/>
+47
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_47'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_48'/>
+48
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_48'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_49'/>
+49
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_49'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return score;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_50'/>
+50
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_50'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_51'/>
+51
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_51'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_52'/>
+52
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_52'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee parista saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_53'/>
+53
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_53'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_54'/>
+54
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_54'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_55'/>
+55
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_55'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_56'/>
+56
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_56'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countPair(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_57'/>
+57
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_57'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_58'/>
+58
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_58'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 1; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_59'/>
+59
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_59'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] == dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_60'/>
+60
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_60'></a>
+</td>
+<td class='covered'><pre><span  class=''>                score = dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_61'/>
+61
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_61'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_62'/>
+62
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_62'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_63'/>
+63
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_63'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 2 * score;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_64'/>
+64
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_64'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_65'/>
+65
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_65'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_66'/>
+66
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_66'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee kahdesta parista saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_67'/>
+67
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_67'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_68'/>
+68
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_68'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_69'/>
+69
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_69'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_70'/>
+70
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_70'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countTwoPairs(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_71'/>
+71
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_71'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_72'/>
+72
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_72'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int pair = countPair(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_73'/>
+73
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_73'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 1; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_74'/>
+74
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_74'>4</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] != pair/2 &#38;&#38; dice[i] == dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_75'/>
+75
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_75'></a>
+</td>
+<td class='covered'><pre><span  class=''>                score = dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_76'/>
+76
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_76'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_77'/>
+77
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_77'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_78'/>
+78
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_78'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (pair != 0 &#38;&#38; score != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_79'/>
+79
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_79'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            return 2 * score + pair;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_80'/>
+80
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_80'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_81'/>
+81
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_81'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_82'/>
+82
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_82'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_83'/>
+83
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_83'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_84'/>
+84
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_84'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_85'/>
+85
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_85'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee kolmesta samasta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_86'/>
+86
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_86'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_87'/>
+87
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_87'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_88'/>
+88
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_88'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_89'/>
+89
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_89'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countThreeOfAKind(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_90'/>
+90
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_90'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_91'/>
+91
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_91'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 2; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_92'/>
+92
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_92'>5</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i-1] == dice[i-2] &#38;&#38; dice[i] == dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_93'/>
+93
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_93'></a>
+</td>
+<td class='covered'><pre><span  class=''>                score = dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_94'/>
+94
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_94'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_95'/>
+95
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_95'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_96'/>
+96
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_96'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 3 * score;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_97'/>
+97
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_97'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_98'/>
+98
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_98'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_99'/>
+99
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_99'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee nelj&#228;st&#228; samasta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_100'/>
+100
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_100'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_101'/>
+101
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_101'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_102'/>
+102
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_102'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_103'/>
+103
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_103'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countFourOfAKind(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_104'/>
+104
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_104'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_105'/>
+105
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_105'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 3; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_106'/>
+106
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_106'>8</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i-2] == dice[i-3] &#38;&#38; dice[i-1] == dice[i-2] &#38;&#38; dice[i] == dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_107'/>
+107
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_107'></a>
+</td>
+<td class='covered'><pre><span  class=''>                score = dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_108'/>
+108
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_108'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_109'/>
+109
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_109'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_110'/>
+110
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_110'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 4 * score;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_111'/>
+111
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_111'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_112'/>
+112
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_112'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_113'/>
+113
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_113'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee pienest&#228; suorasta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_114'/>
+114
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_114'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_115'/>
+115
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_115'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_116'/>
+116
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_116'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_117'/>
+117
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_117'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countSmallStraight(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_118'/>
+118
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_118'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_119'/>
+119
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_119'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] != i+1) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_120'/>
+120
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_120'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_121'/>
+121
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_121'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_122'/>
+122
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_122'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_123'/>
+123
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_123'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 15;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_124'/>
+124
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_124'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_125'/>
+125
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_125'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_126'/>
+126
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_126'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee isosta suorasta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_127'/>
+127
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_127'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_128'/>
+128
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_128'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_129'/>
+129
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_129'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_130'/>
+130
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_130'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countLargeStraight(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_131'/>
+131
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_131'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_132'/>
+132
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_132'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] != i+2) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_133'/>
+133
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_133'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_134'/>
+134
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_134'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_135'/>
+135
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_135'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_136'/>
+136
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_136'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 20;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_137'/>
+137
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_137'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_138'/>
+138
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_138'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_139'/>
+139
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_139'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee t&#228;ysk&#228;dest&#228; saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_140'/>
+140
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_140'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_141'/>
+141
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_141'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_142'/>
+142
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_142'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_143'/>
+143
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_143'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countFullHouse(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_144'/>
+144
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_144'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_145'/>
+145
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_145'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int threeOfAKind = countThreeOfAKind(dice);</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_146'/>
+146
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_146'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 1; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_147'/>
+147
+</td>
+<td class='survived'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_147'>4</a>
+</td>
+<td class='covered'><pre><span  class='survived'>            if (dice[i] != threeOfAKind/3 &#38;&#38; dice[i] == dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_148'/>
+148
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_148'></a>
+</td>
+<td class='covered'><pre><span  class=''>                score = dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_149'/>
+149
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_149'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_150'/>
+150
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_150'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_151'/>
+151
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_151'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (threeOfAKind != 0 &#38;&#38; score != 0) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_152'/>
+152
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_152'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            return 2 * score + threeOfAKind;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_153'/>
+153
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_153'></a>
+</td>
+<td class=''><pre><span  class=''>        } else {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_154'/>
+154
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_154'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_155'/>
+155
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_155'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_156'/>
+156
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_156'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_157'/>
+157
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_157'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_158'/>
+158
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_158'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee sattumasta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_159'/>
+159
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_159'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_160'/>
+160
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_160'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_161'/>
+161
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_161'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_162'/>
+162
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_162'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countChance(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_163'/>
+163
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_163'></a>
+</td>
+<td class='covered'><pre><span  class=''>        int score = 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_164'/>
+164
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_164'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 0; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_165'/>
+165
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_165'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            score += dice[i];</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_166'/>
+166
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_166'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_167'/>
+167
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_167'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return score;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_168'/>
+168
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_168'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_169'/>
+169
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_169'></a>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_170'/>
+170
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_170'></a>
+</td>
+<td class=''><pre><span  class=''>     * Metodi laskee Yatzysta saadut pisteet.</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_171'/>
+171
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_171'></a>
+</td>
+<td class=''><pre><span  class=''>     * @param dice pelaajan nopat</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_172'/>
+172
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_172'></a>
+</td>
+<td class=''><pre><span  class=''>     * @return pelaajan pisteet</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_173'/>
+173
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_173'></a>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_174'/>
+174
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_174'></a>
+</td>
+<td class=''><pre><span  class=''>    private static int countYatzy(int[] dice) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_175'/>
+175
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_175'>3</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        for (int i = 1; i &#60; 5; i++) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_176'/>
+176
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_176'>2</a>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (dice[i] != dice[i-1]) {</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_177'/>
+177
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_177'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>                return 0;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_178'/>
+178
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_178'></a>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_179'/>
+179
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_179'></a>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_180'/>
+180
+</td>
+<td class='killed'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_180'>1</a>
+</td>
+<td class='covered'><pre><span  class='killed'>        return 50;</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_181'/>
+181
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_181'></a>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_182'/>
+182
+</td>
+<td class=''>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_182'></a>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_16'/> 
+
+<p class='KILLED'>removed call to java/util/Arrays::sort : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_17'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctSixes2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFives2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctOnes1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctThrees1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFours1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctPair1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_18'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctOnes1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_19'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_20'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctThrees1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_21'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFours1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_22'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFives2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_23'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctSixes1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_24'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctPair3(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_25'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_26'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_27'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_28'>28</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_28'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_29'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_30'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_31'>31</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_31'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_32'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_34'/> 
+
+<p class='NO_COVERAGE'>replaced return of integer sized value with (x == 0 ? 1 : 0) : NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_44'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_45'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_46'/> 
+
+<p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_49'>49</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_49'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwos2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_58'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_59'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctPair3(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_63'>63</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_63'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_73'>73</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_73'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_74'/> 
+
+<p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer division with multiplication : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_78'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_79'>79</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_79'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> logic.CalculatorTest.correctTwoPairs3(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_81'>81</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_81'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctTwoPairs2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_91'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_92'/> 
+
+<p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctThreeOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctThreeOfAKind2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_96'>96</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_96'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_105'>105</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_105'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_106'>106</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_106'/> 
+
+<p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_110'>110</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_110'/> 
+
+<p class='KILLED'>Replaced integer multiplication with division : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> <p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_118'>118</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_118'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctSmallStraight2(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_119'>119</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_119'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_120'>120</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_120'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctSmallStraight2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_123'>123</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_123'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_131'>131</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_131'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctLargeStraight2(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_132'>132</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_132'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_133'>133</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_133'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctLargeStraight2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_136'>136</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_136'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_146'>146</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_146'/> 
+
+<p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_147'>147</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_147'/> 
+
+<p class='SURVIVED'>negated conditional : SURVIVED</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='SURVIVED'>Replaced integer division with multiplication : SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_151'>151</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_151'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_152'>152</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_152'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer multiplication with division : KILLED -> logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_154'>154</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_154'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctFullHouse3(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_164'>164</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_164'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> <p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_165'>165</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_165'/> 
+
+<p class='KILLED'>Replaced integer addition with subtraction : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_167'>167</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_167'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctChance(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_175'>175</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_175'/> 
+
+<p class='KILLED'>Changed increment from 1 to -1 : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> <p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctYatzy2(logic.CalculatorTest)</p> <p class='KILLED'>changed conditional boundary : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_176'>176</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_176'/> 
+
+<p class='KILLED'>negated conditional : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> <p class='KILLED'>Replaced integer subtraction with addition : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_177'>177</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_177'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctYatzy2(logic.CalculatorTest)</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_180'>180</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1f9d6c7b_180'/> 
+
+<p class='KILLED'>replaced return of integer sized value with (x == 0 ? 1 : 0) : KILLED -> logic.CalculatorTest.correctYatzy1(logic.CalculatorTest)</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>logic.CalculatorTest.correctTwoPairs2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctThrees2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctChance(logic.CalculatorTest) (18 ms)</li><li>logic.CalculatorTest.correctOnes1(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctSixes2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctFives2(logic.CalculatorTest) (4 ms)</li><li>logic.CalculatorTest.correctThreeOfAKind1(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctSmallStraight1(logic.CalculatorTest) (1 ms)</li><li>logic.CalculatorTest.correctLargeStraight2(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctOnes2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctLargeStraight1(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctSmallStraight2(logic.CalculatorTest) (1 ms)</li><li>logic.CalculatorTest.correctFives1(logic.CalculatorTest) (5 ms)</li><li>logic.CalculatorTest.correctTwos2(logic.CalculatorTest) (1 ms)</li><li>logic.CalculatorTest.correctThreeOfAKind3(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctFullHouse1(logic.CalculatorTest) (4 ms)</li><li>logic.CalculatorTest.correctFours1(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctFullHouse2(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctYatzy2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctPair1(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctFourOfAKind1(logic.CalculatorTest) (4 ms)</li><li>logic.CalculatorTest.correctTwoPairs3(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctTwoPairs1(logic.CalculatorTest) (1 ms)</li><li>logic.CalculatorTest.correctPair3(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctFourOfAKind3(logic.CalculatorTest) (4 ms)</li><li>logic.CalculatorTest.correctTwos1(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctThrees1(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctFours2(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctFourOfAKind2(logic.CalculatorTest) (4 ms)</li><li>logic.CalculatorTest.correctThreeOfAKind2(logic.CalculatorTest) (2 ms)</li><li>logic.CalculatorTest.correctYatzy1(logic.CalculatorTest) (1 ms)</li><li>logic.CalculatorTest.correctFullHouse3(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctPair2(logic.CalculatorTest) (3 ms)</li><li>logic.CalculatorTest.correctSixes1(logic.CalculatorTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 0.30
+
+</body>
+</html>
