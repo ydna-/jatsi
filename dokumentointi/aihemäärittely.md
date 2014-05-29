@@ -11,4 +11,3 @@
 - Valitse pisteet (kolmannen heittokerran jälkeen)
 - High score -lista (päivittyy automaattisesti)
 - Kaksi vaihtoehtoa: perus- ja pakkojatsi
-
