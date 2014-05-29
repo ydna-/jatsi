@@ -13,4 +13,4 @@ jatsi
 - High score -lista (päivittyy automaattisesti)
 - Kaksi vaihtoehtoa: perus- ja pakkojatsi
 
-![alt text](https://github.com/ydna-/jatsi/blob/master/dokumentointi/luokkakaavio.png "Luokkakaavio")
+![Luokkakaavio](dokumentointi/luokkakaavio.png?raw=true)
