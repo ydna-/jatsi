@@ -31,7 +31,7 @@ public class Calculator {
             case "chance": return countChance(dice);
             case "yatzy": return countYatzy(dice);
         }
-        return 0;
+        return -1;
     }
     /**
      * Metodi laskee ykkösistä, kakkosista, kolmosista, nelosista, viitosista ja kuutosista saadut pisteet.

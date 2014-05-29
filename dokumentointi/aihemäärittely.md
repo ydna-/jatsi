@@ -7,6 +7,8 @@
 **Toiminnot:**
 - Aloita/lopeta peli
 - Heitä noppia (yhteensä kolme kertaa)
-- Lukitse noppia (ensimmäisellä ja toisella heittokerralla)
+- Lukitse noppia tai poista lukitus (ensimmäisellä ja toisella heittokerralla)
 - Valitse pisteet (kolmannen heittokerran jälkeen)
 - High score -lista (päivittyy automaattisesti)
+- Kaksi vaihtoehtoa: perus- ja pakkojatsi
+
