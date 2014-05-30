@@ -74,7 +74,7 @@ public class Scores {
     public void setTotal() {
         boolean check = true;
         int sum = 0;
-        for (int i = 6; i < 16; i++) {
+        for (int i = 6; i < 17; i++) {
             sum += this.scores[i];
             if (this.scores[i] == -1) {
                 check = false;

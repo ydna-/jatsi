@@ -28,57 +28,76 @@ public class Main {
     public static void main(String[] args) {
         logic.Game yatzy = new logic.Game();
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to a single player game of Yatzy!");
-        System.out.print("Please enter your name: ");
-        String name = input.nextLine();
-        while (name.equals("")) {
-            System.out.print("Please enter a valid name: ");
-            name = input.nextLine();
+        System.out.println("Welcome to a game of Yatzy!");
+        System.out.print("How many players wish to play? ");
+        int num = input.nextInt();
+        while (num < 1 || num > 6) {
+            System.out.print("Please enter a number between one and six: ");
+            num = input.nextInt();
         }
-        yatzy.singlePlayer.setName(name);
-        System.out.println(name + ", let the game begin!");
+        for (int i = 0; i < num; i++) {
+            String name = input.nextLine();
+            while (name.equals("")) {
+                System.out.print("Player " + (i+1) + ", please enter your name: ");
+                name = input.nextLine();
+            }
+            yatzy.addPlayer(name);
+        }
+        System.out.println("Let the game begin!");
         for (int i = 0; i < 15; i++) {
-            printScorecard(yatzy.singlePlayer.getScorecard().scores);
-            for (int j = 0; j < 3; j++) {
-                yatzy.rollDice();
-                System.out.println(name + " got the following dice:");
-                for (int k = 0; k < 5; k++) {
-                    System.out.print(yatzy.dice[k].getValue() + " ");
-                }
-                System.out.println();
-                if (j != 2) {
-                    String answer = "";
-                    for (int k = 0; k < 5; k++) {
-                        if (!yatzy.dice[k].isLocked()) {
-                            System.out.print("Lock dice number " + (k+1) + "? (y/n) ");
-                            answer = input.nextLine();
-                            if (answer.toLowerCase().startsWith("y")) {
-                                yatzy.dice[k].lock();
-                            }
-                        } else {
-                            System.out.print("Unlock dice number " + (k+1) + "? (y/n) ");
-                            answer = input.nextLine();
-                            if (answer.toLowerCase().startsWith("y")) {
-                                yatzy.dice[k].unlock();
+            for (int j = 0; j < num; j++) {
+                printScorecard(yatzy.players.get(j).getScorecard().scores);
+                for (int k = 0; k < 3; k++) {
+                    yatzy.rollDice();
+                    System.out.println(yatzy.players.get(j).getName() + " got the following dice:");
+                    for (int l = 0; l < 5; l++) {
+                        System.out.print(yatzy.dice[l].getValue() + " ");
+                    }
+                    System.out.println();
+                    if (k != 2) {
+                        String answer;
+                        for (int l = 0; l < 5; l++) {
+                            if (!yatzy.dice[l].isLocked()) {
+                                System.out.print("Lock dice number " + (l+1) + "? (y/n) ");
+                                answer = input.nextLine();
+                                if (answer.toLowerCase().startsWith("y")) {
+                                    yatzy.dice[l].lock();
+                                }
+                            } else {
+                                System.out.print("Unlock dice number " + (l+1) + "? (y/n) ");
+                                answer = input.nextLine();
+                                if (answer.toLowerCase().startsWith("y")) {
+                                    yatzy.dice[l].unlock();
+                                }
                             }
                         }
+                    } else {
+                        System.out.print("Which combination to use? ");
+                        String combination = input.nextLine().toLowerCase();
+                        while (yatzy.players.get(j).getScorecard().getScore(combination) != -1) {
+                            System.out.print("Please enter a valid combination! ");
+                            combination = input.nextLine().toLowerCase();
+                        }
+                        yatzy.putScore(combination, yatzy.players.get(j));
+                        yatzy.freeDice();
                     }
-                } else {
-                    System.out.print("Which combination to use? ");
-                    String combination = input.nextLine().toLowerCase();
-                    while (yatzy.singlePlayer.getScorecard().getScore(combination) != -1) {
-                        System.out.print("Please enter a valid combination! ");
-                        combination = input.nextLine().toLowerCase();
-                    }
-                    yatzy.putScore(combination);
-                    yatzy.freeDice();
                 }
             }
         }
-        yatzy.singlePlayer.getScorecard().setUpperTotal();
-        yatzy.singlePlayer.getScorecard().setTotal();
         System.out.println("Game over!");
-        printScorecard(yatzy.singlePlayer.getScorecard().scores);
+        int player = 0;
+        int score = 0;
+        for (int i = 0; i < num; i++) {
+            yatzy.players.get(i).getScorecard().setUpperTotal();
+            yatzy.players.get(i).getScorecard().setTotal();
+            if (score < yatzy.players.get(i).getScorecard().scores[17]) {
+                player = i;
+                score = yatzy.players.get(i).getScorecard().scores[17];
+            }
+            System.out.println(yatzy.players.get(i).getName() + " got the following scores: ");
+            printScorecard(yatzy.players.get(i).getScorecard().scores);
+        }
+        System.out.println(yatzy.players.get(player).getName() + " won! Congratulations!");
     }
     
 }
