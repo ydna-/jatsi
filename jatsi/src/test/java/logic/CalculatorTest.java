@@ -208,4 +208,11 @@ public class CalculatorTest {
         int[] dice = {3, 1, 4, 1, 5};
         assertEquals(0, Calculator.count(dice, "yatzy"));
     }
+    
+    @Test
+    public void invalidInput() {
+        int[] dice = {1, 2, 3, 4, 5};
+        assertEquals(-1, Calculator.count(dice, "input"));
+    }
+    
 }

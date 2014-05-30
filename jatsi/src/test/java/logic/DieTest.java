@@ -3,10 +3,6 @@ package logic;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author ydna
- */
 public class DieTest {
     
     @Test

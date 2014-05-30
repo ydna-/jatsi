@@ -1,46 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package logic;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author ydna
- */
 public class GameTest {
     
-    public GameTest() {
+    @Test
+    public void gameBeginsAsExpected() {
+        Game yatzy = new Game();
+        assertEquals(5, yatzy.dice.length);
+        assertEquals(0, yatzy.players.size());
+        for (int i = 0; i < 5; i++) {
+            assertEquals(0, yatzy.dice[i].getValue());
+            assertEquals(false, yatzy.dice[i].isLocked());
+        }
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void playersAreAddedToList() {
+        Game yatzy = new Game();
+        yatzy.addPlayer("first");
+        yatzy.addPlayer("second");
+        yatzy.addPlayer("third");
+        assertEquals(3, yatzy.players.size());
+        assertEquals("first", yatzy.players.get(0).getName());
+        assertEquals("second", yatzy.players.get(1).getName());
+        assertEquals("third", yatzy.players.get(2).getName());
     }
     
-    @AfterClass
-    public static void tearDownClass() {
+    @Test
+    public void diceValuesChangeWhenRolled() {
+        Game yatzy = new Game();
+        yatzy.rollDice();
+        for (int i = 0; i < 5; i++) {
+            assertEquals(true, yatzy.dice[i].getValue() >= 1 && yatzy.dice[i].getValue() <= 6);
+        }
     }
     
-    @Before
-    public void setUp() {
+    @Test
+    public void diceAreUnlockedWhenFreed() {
+        Game yatzy = new Game();
+        yatzy.rollDice();
+        for (int i = 0; i < 5; i++) {
+            yatzy.dice[i].lock();
+        }
+        yatzy.freeDice();
+        for (int i = 0; i < 5; i++) {
+            assertEquals(false, yatzy.dice[i].isLocked());
+        }
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void scoresArePutToScorecard() {
+        Game yatzy = new Game();
+        yatzy.addPlayer("player");
+        yatzy.rollDice();
+        int sum = 0;
+        for (int i = 0; i < 5; i++) {
+            sum += yatzy.dice[i].getValue();
+        }
+        yatzy.putScore("chance", yatzy.players.get(0));
+        assertEquals(sum, yatzy.players.get(0).getScorecard().getScore("chance"));
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
 }
