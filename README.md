@@ -1,7 +1,7 @@
 jatsi
 =====
 
-**Aihe:** Toteutetaan klassinen 1-4 pelaajan Yatzy-noppapeli Javalla.
+**Aihe:** Toteutetaan klassinen 1-6 pelaajan Yatzy-noppapeli Javalla.
 
 **Käyttäjät:** Pelaaja.
 
