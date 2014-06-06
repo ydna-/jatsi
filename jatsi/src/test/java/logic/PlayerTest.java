@@ -15,7 +15,7 @@ public class PlayerTest {
     @Test
     public void returnScoreFromCard() {
         Player two = new Player();
-        assertEquals(-1, two.getScorecard().scores[0]);
+        assertEquals(-1, two.getScores().scores[0]);
     }
     
 }

@@ -1,9 +1,18 @@
 package logic;
 
+/**
+ * Luokka mallintaa Yatzy-noppapelin pelaajan pistetaulukkoa.
+ */
 public class Scores {
     
+    /**
+     * Pistetaulukko.
+     */
     public int[] scores;
     
+    /**
+     * Konstruktori.
+     */
     public Scores() {
         this.scores = new int[18];
         for (int i = 0; i < 18; i++) {
@@ -11,6 +20,11 @@ public class Scores {
         }
     }
     
+    /**
+     * Asettaa pisteet halutulle noppayhdistelmälle.
+     * @param score pelaajan pisteet
+     * @param combination noppayhdistelmä
+     */
     public void setScore(int score, String combination) {
         switch (combination) {
             case "ones": scores[0] = score; break;
@@ -31,6 +45,11 @@ public class Scores {
         }
     }
     
+    /**
+     * Metodi palauttaa halutun noppa-yhdistelmän pisteet.
+     * @param combination noppa-yhdistelmä
+     * @return yhdistelmän pisteet
+     */
     public int getScore(String combination) {
         switch (combination) {
             case "ones": return scores[0];
@@ -52,6 +71,9 @@ public class Scores {
         return 0;
     }
     
+    /**
+     * Laskee pelaajan pistetaulukon ylemmän summan ja asettaa sen pistetaulukkoon.
+     */
     public void setUpperTotal() {
         boolean check = true;
         int sum = 0;
@@ -71,6 +93,9 @@ public class Scores {
         }
     }
     
+    /**
+     * Laskee pelaajan pisteiden summan ja asettaa sen pistetaulukkoon.
+     */
     public void setTotal() {
         boolean check = true;
         int sum = 0;

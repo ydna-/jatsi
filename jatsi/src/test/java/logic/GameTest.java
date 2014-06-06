@@ -60,7 +60,7 @@ public class GameTest {
             sum += yatzy.dice[i].getValue();
         }
         yatzy.putScore("chance", yatzy.players.get(0));
-        assertEquals(sum, yatzy.players.get(0).getScorecard().getScore("chance"));
+        assertEquals(sum, yatzy.players.get(0).getScores().getScore("chance"));
     }
     
 }

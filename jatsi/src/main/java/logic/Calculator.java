@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Luokka tarjoaa metodin pelaajan pisteiden laskemiseen eri noppayhdistelmillä.
  */
 public class Calculator {
+    
     /**
      * Metodi laskee pelaajan saamat pisteet tietyllä noppayhdistelmällä.
      * @param dice pelaajan nopat
@@ -33,6 +34,7 @@ public class Calculator {
         }
         return -1;
     }
+    
     /**
      * Metodi laskee ykkösistä, kakkosista, kolmosista, nelosista, viitosista ja kuutosista saadut pisteet.
      * @param dice pelaajan nopat
@@ -48,6 +50,7 @@ public class Calculator {
         }
         return score;
     }
+    
     /**
      * Metodi laskee parista saadut pisteet.
      * @param dice pelaajan nopat
@@ -62,6 +65,7 @@ public class Calculator {
         }
         return 2 * score;
     }
+    
     /**
      * Metodi laskee kahdesta parista saadut pisteet.
      * @param dice pelaajan nopat
@@ -81,6 +85,7 @@ public class Calculator {
             return 0;
         }
     }
+    
     /**
      * Metodi laskee kolmesta samasta saadut pisteet.
      * @param dice pelaajan nopat
@@ -95,6 +100,7 @@ public class Calculator {
         }
         return 3 * score;
     }
+    
     /**
      * Metodi laskee neljästä samasta saadut pisteet.
      * @param dice pelaajan nopat
@@ -109,6 +115,7 @@ public class Calculator {
         }
         return 4 * score;
     }
+    
     /**
      * Metodi laskee pienestä suorasta saadut pisteet.
      * @param dice pelaajan nopat
@@ -122,6 +129,7 @@ public class Calculator {
         }
         return 15;
     }
+    
     /**
      * Metodi laskee isosta suorasta saadut pisteet.
      * @param dice pelaajan nopat
@@ -135,6 +143,7 @@ public class Calculator {
         }
         return 20;
     }
+    
     /**
      * Metodi laskee täyskädestä saadut pisteet.
      * @param dice pelaajan nopat
@@ -154,6 +163,7 @@ public class Calculator {
             return 0;
         }
     }
+    
     /**
      * Metodi laskee sattumasta saadut pisteet.
      * @param dice pelaajan nopat
@@ -166,6 +176,7 @@ public class Calculator {
         }
         return score;
     }
+    
     /**
      * Metodi laskee Yatzysta saadut pisteet.
      * @param dice pelaajan nopat
@@ -179,4 +190,5 @@ public class Calculator {
         }
         return 50;
     }
+    
 }

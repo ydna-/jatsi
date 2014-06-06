@@ -1,13 +1,26 @@
 package logic;
 
+/**
+ * Luokka mallintaa Yatzy-noppapelin pelaajaa.
+ */
 public class Player {
     
+    /**
+     * Pelaajan nimi.
+     */
     private String name;
-    private Scores scorecard;
     
+    /**
+     * Pelaajan pisteet.
+     */
+    private Scores scores;
+    
+    /**
+     * Konstruktori.
+     */
     public Player() {
         this.name = "";
-        this.scorecard = new Scores();
+        this.scores = new Scores();
     }
     
     public String getName() {
@@ -18,8 +31,8 @@ public class Player {
         this.name = name;
     }
     
-    public Scores getScorecard() {
-        return this.scorecard;
+    public Scores getScores() {
+        return this.scores;
     }
     
 }
