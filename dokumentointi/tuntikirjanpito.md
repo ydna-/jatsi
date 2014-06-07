@@ -7,4 +7,5 @@
 * 30.5.2014 14.00-15.00 Yksikkötestit pelin logiikan luokille.
 * 6.6.2014 16.00-22.00 Dokumentointia, sekvenssikaavioita, Swingin opiskelua.
 * 7.6.2014 13.00-16.00 High score -lista ja siihen liittyvä i/o.
+* 7.6.2014 18.00-19.00 Yksikkötestit high score -listalle.
 
