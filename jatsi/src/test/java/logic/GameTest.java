@@ -38,6 +38,19 @@ public class GameTest {
     }
     
     @Test
+    public void lockedDiceAreNotRolled() {
+        Game yatzy = new Game();
+        yatzy.rollDice();
+        int value1 = yatzy.dice[0].getValue();
+        int value2 = yatzy.dice[4].getValue();
+        yatzy.dice[0].lock();
+        yatzy.dice[4].lock();
+        yatzy.rollDice();
+        assertEquals(value1, yatzy.dice[0].getValue());
+        assertEquals(value2, yatzy.dice[4].getValue());
+    }
+    
+    @Test
     public void diceAreUnlockedWhenFreed() {
         Game yatzy = new Game();
         yatzy.rollDice();

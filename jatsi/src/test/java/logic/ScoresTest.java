@@ -23,9 +23,9 @@ public class ScoresTest {
         assertEquals(-1, card.getScore("full house"));
         assertEquals(-1, card.getScore("chance"));
         assertEquals(-1, card.getScore("yatzy"));
-        assertEquals(-1, card.scores[6]);
-        assertEquals(-1, card.scores[7]);
-        assertEquals(-1, card.scores[17]);
+        assertEquals(-1, card.getScore("upper total"));
+        assertEquals(-1, card.getScore("bonus"));
+        assertEquals(-1, card.getScore("total"));
     }
     
     @Test
@@ -69,9 +69,9 @@ public class ScoresTest {
         assertEquals(28, card.getScore("full house"));
         assertEquals(30, card.getScore("chance"));
         assertEquals(50, card.getScore("yatzy"));
-        assertEquals(105, card.scores[6]);
-        assertEquals(50, card.scores[7]);
-        assertEquals(374, card.scores[17]);
+        assertEquals(105, card.getScore("upper total"));
+        assertEquals(50, card.getScore("bonus"));
+        assertEquals(374, card.getScore("total"));
     }
     
     @Test
@@ -109,9 +109,9 @@ public class ScoresTest {
         assertEquals(7, card.getScore("full house"));
         assertEquals(5, card.getScore("chance"));
         assertEquals(0, card.getScore("yatzy"));
-        assertEquals(21, card.scores[6]);
-        assertEquals(0, card.scores[7]);
-        assertEquals(48, card.scores[17]);
+        assertEquals(21, card.getScore("upper total"));
+        assertEquals(0, card.getScore("bonus"));
+        assertEquals(48, card.getScore("total"));
     }
     
 }
