@@ -25,7 +25,6 @@ public class YatzyGUI implements Runnable {
         container.setLayout(new BorderLayout());
         JButton roll = new JButton("Roll!");
         container.add(roll, BorderLayout.SOUTH);
-        
     }
     
     public JFrame getFrame() {

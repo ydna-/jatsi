@@ -21,7 +21,36 @@ public class Scores {
     }
     
     /**
-     * Asettaa pisteet halutulle noppayhdistelmälle.
+     * Metodi palauttaa halutun noppa-yhdistelmän pisteet.
+     * @param combination noppa-yhdistelmä
+     * @return yhdistelmän pisteet
+     */
+    public int getScore(String combination) {
+        switch (combination) {
+            case "ones": return scores[0];
+            case "twos": return scores[1];
+            case "threes": return scores[2];
+            case "fours": return scores[3];
+            case "fives": return scores[4];
+            case "sixes": return scores[5];
+            case "upper total": return scores[6];
+            case "bonus": return scores[7];
+            case "pair": return scores[8];
+            case "two pairs": return scores[9];
+            case "three of a kind": return scores[10];
+            case "four of a kind": return scores[11];
+            case "small straight": return scores[12];
+            case "large straight": return scores[13];
+            case "full house": return scores[14];
+            case "chance": return scores[15];
+            case "yatzy": return scores[16];
+            case "total": return scores[17];
+        }
+        return 0;
+    }
+    
+    /**
+     * Metodi asettaa pisteet halutulle noppayhdistelmälle.
      * @param score pelaajan pisteet
      * @param combination noppayhdistelmä
      */
@@ -46,68 +75,30 @@ public class Scores {
     }
     
     /**
-     * Metodi palauttaa halutun noppa-yhdistelmän pisteet.
-     * @param combination noppa-yhdistelmä
-     * @return yhdistelmän pisteet
-     */
-    public int getScore(String combination) {
-        switch (combination) {
-            case "ones": return scores[0];
-            case "twos": return scores[1];
-            case "threes": return scores[2];
-            case "fours": return scores[3];
-            case "fives": return scores[4];
-            case "sixes": return scores[5];
-            case "pair": return scores[8];
-            case "two pairs": return scores[9];
-            case "three of a kind": return scores[10];
-            case "four of a kind": return scores[11];
-            case "small straight": return scores[12];
-            case "large straight": return scores[13];
-            case "full house": return scores[14];
-            case "chance": return scores[15];
-            case "yatzy": return scores[16];
-        }
-        return 0;
-    }
-    
-    /**
-     * Laskee pelaajan pistetaulukon ylemmän summan ja asettaa sen pistetaulukkoon.
+     * Metodi laskee pelaajan pistetaulukon ylemmän summan ja asettaa sen pistetaulukkoon.
      */
     public void setUpperTotal() {
-        boolean check = true;
         int sum = 0;
         for (int i = 0; i < 6; i++) {
             sum += this.scores[i];
-            if (this.scores[i] == -1) {
-                check = false;
-            }
         }
-        if (check) {
-            this.scores[6] = sum;
-            if (sum >= 63) {
-                this.scores[7] = 50;
-            } else {
-                this.scores[7] = 0;
-            }
+        this.scores[6] = sum;
+        if (sum >= 63) {
+            this.scores[7] = 50;
+        } else {
+            this.scores[7] = 0;
         }
     }
     
     /**
-     * Laskee pelaajan pisteiden summan ja asettaa sen pistetaulukkoon.
+     * Metodi laskee pelaajan pisteiden summan ja asettaa sen pistetaulukkoon.
      */
     public void setTotal() {
-        boolean check = true;
         int sum = 0;
         for (int i = 6; i < 17; i++) {
             sum += this.scores[i];
-            if (this.scores[i] == -1) {
-                check = false;
-            }
         }
-        if (check) {
-            this.scores[17] = sum;
-        }
+        this.scores[17] = sum;
     }
     
 }

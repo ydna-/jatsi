@@ -101,9 +101,9 @@ public class Main {
         for (int i = 0; i < num; i++) {
             yatzy.players.get(i).getScores().setUpperTotal();
             yatzy.players.get(i).getScores().setTotal();
-            if (score < yatzy.players.get(i).getScores().scores[17]) {
+            if (score < yatzy.players.get(i).getScores().getScore("total")) {
                 player = i;
-                score = yatzy.players.get(i).getScores().scores[17];
+                score = yatzy.players.get(i).getScores().getScore("total");
             }
             System.out.println(yatzy.players.get(i).getName() + " got the following scores: ");
             printScores(yatzy.players.get(i).getScores().scores);
