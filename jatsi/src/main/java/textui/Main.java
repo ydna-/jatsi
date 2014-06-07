@@ -109,6 +109,7 @@ public class Main {
             printScores(yatzy.players.get(i).getScores().scores);
         }
         System.out.println(yatzy.players.get(player).getName() + " won! Congratulations!");
+        
     }
     
 }

@@ -38,7 +38,7 @@ public class Highscores {
     /**
      * Metodi lukee high score -listan tiedostosta.
      */
-    private void loadFile() {
+    private void readFile() {
         try {
             in = new ObjectInputStream(new FileInputStream(FILE));
             highscores = (ArrayList<Highscore>) in.readObject();
@@ -68,9 +68,9 @@ public class Highscores {
             out = new ObjectOutputStream(new FileOutputStream(FILE));
             out.writeObject(highscores);
         } catch (FileNotFoundException e) {
-            System.out.println("FNF Error while updating: " + e.getMessage());
+            System.out.println("FNF Error while writing: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("IO Error while updating: " + e.getMessage());
+            System.out.println("IO Error while writing: " + e.getMessage());
         } finally {
             try {
                 if (out != null) {
@@ -78,7 +78,7 @@ public class Highscores {
                     out.close();
                 }
             } catch (IOException e) {
-                System.out.println("IO Error while updating: " + e.getMessage());
+                System.out.println("IO Error while writing: " + e.getMessage());
             }
         }
     }
@@ -105,7 +105,7 @@ public class Highscores {
      * @param score pelaajan pisteet
      */
     public void addScore(String name, int score) {
-        loadFile();
+        readFile();
         highscores.add(new Highscore(name, score));
         writeFile();
     }
@@ -115,7 +115,7 @@ public class Highscores {
      * @return high score -lista
      */
     public ArrayList<Highscore> getHighscores() {
-        loadFile();
+        readFile();
         sort();
         return highscores;
     }

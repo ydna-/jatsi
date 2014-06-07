@@ -41,9 +41,11 @@
                 <configuration>
                     <targetClasses>
                         <param>logic.*</param>
+                        <param>fileio.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>logic.*</param>
+                        <param>fileio.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
