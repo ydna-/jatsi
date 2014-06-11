@@ -97,8 +97,8 @@ public class CalculatorTest {
     
     @Test
     public void correctTwoPairs1() {
-        int[] dice = {5, 1, 4, 1, 5};
-        assertEquals(12, Calculator.count(dice, "two pairs"));
+        int[] dice = {5, 2, 4, 2, 5};
+        assertEquals(14, Calculator.count(dice, "two pairs"));
     }
     
     @Test
@@ -111,6 +111,24 @@ public class CalculatorTest {
     public void correctTwoPairs3() {
         int[] dice = {5, 6, 6, 6, 5};
         assertEquals(22, Calculator.count(dice, "two pairs"));
+    }
+    
+    @Test
+    public void correctTwoPairs4() {
+        int[] dice = {2, 2, 3, 3, 5};
+        assertEquals(10, Calculator.count(dice, "two pairs"));
+    }
+    
+    @Test
+    public void correctTwoPairs5() {
+        int[] dice = {1, 5, 6, 5, 6};
+        assertEquals(22, Calculator.count(dice, "two pairs"));
+    }
+    
+    @Test
+    public void correctTwoPairs6() {
+        int[] dice = {5, 5, 5, 5, 1};
+        assertEquals(0, Calculator.count(dice, "two pairs"));
     }
     
     @Test
@@ -188,6 +206,18 @@ public class CalculatorTest {
     @Test
     public void correctFullHouse3() {
         int[] dice = {3, 1, 4, 1, 4};
+        assertEquals(0, Calculator.count(dice, "full house"));
+    }
+    
+    @Test
+    public void correctFullHouse4() {
+        int[] dice = {6, 6, 6, 3, 3};
+        assertEquals(24, Calculator.count(dice, "full house"));
+    }
+    
+    @Test
+    public void correctFullHouse5() {
+        int[] dice = {5, 5, 5, 5, 5};
         assertEquals(0, Calculator.count(dice, "full house"));
     }
     

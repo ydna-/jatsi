@@ -12,3 +12,4 @@
 * 10.06.2014 19.00-22.00 Graafisen käyttöliittymän aloitusta.
 * 11.06.2014 04.00-08.00 GUI valmis. (Note to self: never again)
 * 11.06.2014 16.00-17.30 Testejä ja GUI:ta säädetty.
+* 11.06.2014 22.30-00.00 Sama jatkuu.

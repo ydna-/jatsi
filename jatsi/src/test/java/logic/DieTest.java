@@ -13,8 +13,8 @@ public class DieTest {
     
     @Test
     public void dieValueBetweenOneAndSix() {
-        dice.roll();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 30; i++) {
+            dice.roll();
             assertEquals(true, dice.getValue() >= 1 && dice.getValue() <= 6);
         }
     }

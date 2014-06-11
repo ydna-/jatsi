@@ -7,37 +7,54 @@ import javax.swing.JOptionPane;
 /**
  * Graafinen käyttöliittymä Yatzy-noppapelille.
  */
-public class Jatsi extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame {
 
+    /**
+     * Jatsi-peli.
+     */
     private Game jatsi;
-    private Highscores highscores;
-    private int numberOfPlayers;
     
     /**
-     * Creates new form Jatsi
+     * High score -lista.
      */
-    public Jatsi() {
+    private Highscores highscores;
+    
+    /**
+     * Konstruktori.
+     */
+    public GUI() {
         initComponents();
         this.jatsi = new Game();
         this.highscores = new Highscores("highscores.dat");
-        this.Scorecard.setValueAt("Ones", 0, 0);
-        this.Scorecard.setValueAt("Twos", 1, 0);
-        this.Scorecard.setValueAt("Threes", 2, 0);
-        this.Scorecard.setValueAt("Fours", 3, 0);
-        this.Scorecard.setValueAt("Fives", 4, 0);
-        this.Scorecard.setValueAt("Sixes", 5, 0);
-        this.Scorecard.setValueAt("Upper total", 6, 0);
-        this.Scorecard.setValueAt("Bonus", 7, 0);
-        this.Scorecard.setValueAt("Pair", 8, 0);
-        this.Scorecard.setValueAt("Two pairs", 9, 0);
-        this.Scorecard.setValueAt("Three of a kind", 10, 0);
-        this.Scorecard.setValueAt("Four of a kind", 11, 0);
-        this.Scorecard.setValueAt("Small straight", 12, 0);
-        this.Scorecard.setValueAt("Large straight", 13, 0);
-        this.Scorecard.setValueAt("Full house", 14, 0);
-        this.Scorecard.setValueAt("Chance", 15, 0);
-        this.Scorecard.setValueAt("Yatzy", 16, 0);
-        this.Scorecard.setValueAt("TOTAL", 17, 0);
+    }
+    
+    /**
+     * Metodi muuttaa noppayhdistelmän kokonaisluvuksi, jota käytetään taulukon indekseissä.
+     * @param combination noppayhdistelmä
+     * @return noppayhdistelmä kokonaislukuna
+     */
+    private static int combinationToInteger(String combination) {
+        switch (combination) {
+            case "ones": return 0;
+            case "twos": return 1;
+            case "threes": return 2;
+            case "fours": return 3;
+            case "fives": return 4;
+            case "sixes": return 5;
+            case "upper total": return 6;
+            case "bonus": return 7;
+            case "pair": return 8;
+            case "two pairs": return 9;
+            case "three of a kind": return 10;
+            case "four of a kind": return 11;
+            case "small straight": return 12;
+            case "large straight": return 13;
+            case "full house": return 14;
+            case "chance": return 15;
+            case "yatzy": return 16;
+            case "total": return 17;
+        }
+        return 0;
     }
 
     /**
@@ -49,11 +66,7 @@ public class Jatsi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numberDialog = new javax.swing.JDialog();
-        jSlider1 = new javax.swing.JSlider();
-        OKButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         Scorecard = new javax.swing.JTable();
         rollButton = new javax.swing.JButton();
         dieButton1 = new javax.swing.JToggleButton();
@@ -66,55 +79,6 @@ public class Jatsi extends javax.swing.JFrame {
         newGameMenuItem = new javax.swing.JMenuItem();
         highScoresMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-
-        numberDialog.setMinimumSize(new java.awt.Dimension(260, 160));
-        numberDialog.setModal(true);
-        numberDialog.setPreferredSize(new java.awt.Dimension(260, 160));
-        numberDialog.setResizable(false);
-
-        jSlider1.setMajorTickSpacing(1);
-        jSlider1.setMaximum(6);
-        jSlider1.setMinimum(1);
-        jSlider1.setPaintLabels(true);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setValue(1);
-
-        OKButton.setText("OK");
-        OKButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("How many players wish to play?");
-
-        javax.swing.GroupLayout numberDialogLayout = new javax.swing.GroupLayout(numberDialog.getContentPane());
-        numberDialog.getContentPane().setLayout(numberDialogLayout);
-        numberDialogLayout.setHorizontalGroup(
-            numberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numberDialogLayout.createSequentialGroup()
-                .addGroup(numberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(numberDialogLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(numberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(numberDialogLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(OKButton)))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        numberDialogLayout.setVerticalGroup(
-            numberDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(numberDialogLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OKButton)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusableWindowState(false);
@@ -160,7 +124,25 @@ public class Jatsi extends javax.swing.JFrame {
             }
         });
         Scorecard.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(Scorecard);
+        jScrollPane2.setViewportView(Scorecard);
+        Scorecard.setValueAt("Ones", 0, 0);
+        Scorecard.setValueAt("Twos", 1, 0);
+        Scorecard.setValueAt("Threes", 2, 0);
+        Scorecard.setValueAt("Fours", 3, 0);
+        Scorecard.setValueAt("Fives", 4, 0);
+        Scorecard.setValueAt("Sixes", 5, 0);
+        Scorecard.setValueAt("Upper total", 6, 0);
+        Scorecard.setValueAt("Bonus", 7, 0);
+        Scorecard.setValueAt("Pair", 8, 0);
+        Scorecard.setValueAt("Two pairs", 9, 0);
+        Scorecard.setValueAt("Three of a kind", 10, 0);
+        Scorecard.setValueAt("Four of a kind", 11, 0);
+        Scorecard.setValueAt("Small straight", 12, 0);
+        Scorecard.setValueAt("Large straight", 13, 0);
+        Scorecard.setValueAt("Full house", 14, 0);
+        Scorecard.setValueAt("Chance", 15, 0);
+        Scorecard.setValueAt("Yatzy", 16, 0);
+        Scorecard.setValueAt("TOTAL", 17, 0);
 
         rollButton.setText("Roll!");
         rollButton.setEnabled(false);
@@ -240,23 +222,25 @@ public class Jatsi extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 177, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(dieButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dieButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dieButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dieButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dieButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(177, 177, 177))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                        .addGap(0, 177, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dieButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dieButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dieButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dieButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dieButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(165, 165, 165))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -271,7 +255,7 @@ public class Jatsi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rollButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -297,7 +281,7 @@ public class Jatsi extends javax.swing.JFrame {
                 combination = JOptionPane.showInputDialog("Please enter a valid combination!");
             }
             int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
-            Scorecard.setValueAt(score, Calculator.combinationToInteger(combination), jatsi.player+1);
+            Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
             if (jatsi.dice[0].isLocked()) {
                 dieButton1.setSelected(false);
             }
@@ -314,7 +298,6 @@ public class Jatsi extends javax.swing.JFrame {
                 dieButton5.setSelected(false);
             }
             if (!(jatsi.counter == 14 && jatsi.player == jatsi.players.size()-1)) {
-                System.out.println(jatsi.counter + " " + jatsi.player);
                 jatsi.freeDice();
                 jatsi.nextPlayer();
                 rollButton.setEnabled(true);
@@ -322,10 +305,10 @@ public class Jatsi extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Game over!");
                 int winner = 0;
                 int winningScore = 0;
-                for (int i = 0; i < numberOfPlayers; i++) {
+                for (int i = 0; i < jatsi.players.size(); i++) {
                     jatsi.players.get(i).getScores().setUpperTotal();
                     jatsi.players.get(i).getScores().setTotal();
-                    if (score < jatsi.players.get(i).getScores().getScore("total")) {
+                    if (winningScore < jatsi.players.get(i).getScores().getScore("total")) {
                         winner = i;
                         winningScore = jatsi.players.get(i).getScores().getScore("total");
                     }
@@ -335,6 +318,8 @@ public class Jatsi extends javax.swing.JFrame {
                     highscores.addScore(jatsi.players.get(i).getName(), jatsi.players.get(i).getScores().getScore("total"));
                 }
                 JOptionPane.showMessageDialog(null, jatsi.players.get(winner).getName() + "won with " + winningScore + " points!");
+                this.jatsi = new Game();
+                initComponents();
             }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
@@ -384,30 +369,27 @@ public class Jatsi extends javax.swing.JFrame {
     }//GEN-LAST:event_highScoresMenuItemActionPerformed
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
-        numberDialog.setVisible(true);
-    }//GEN-LAST:event_newGameMenuItemActionPerformed
-
-    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKButtonActionPerformed
-        numberDialog.dispose();
-        numberOfPlayers = jSlider1.getValue();
+        String[] values = {"1", "2", "3", "4", "5", "6"};
+        String number = (String)JOptionPane.showInputDialog(null, "How many players wish to play?", "Input", JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+        int numberOfPlayers = Integer.parseInt(number);
         String name;
         for (int i = 0; i < numberOfPlayers; i++) {
-            name = JOptionPane.showInputDialog("Player " + (i+1) + ", please enter your name:");
+            name = JOptionPane.showInputDialog("Player " + (i+1) + ", please enter your name.");
             jatsi.addPlayer(name);
             Scorecard.getColumnModel().getColumn(i+1).setHeaderValue(name);
         }
+        for (int i = 0; i < 18; i++) {
+            for (int j = 1; j < 6; j++) {
+                Scorecard.setValueAt("", i, j);
+            }
+        }
         rollButton.setEnabled(true);
-    }//GEN-LAST:event_OKButtonActionPerformed
+    }//GEN-LAST:event_newGameMenuItemActionPerformed
     
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -416,27 +398,25 @@ public class Jatsi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Jatsi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Jatsi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Jatsi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Jatsi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Jatsi().setVisible(true);
+                new GUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Menu;
-    private javax.swing.JButton OKButton;
     private javax.swing.JTable Scorecard;
     private javax.swing.JToggleButton dieButton1;
     private javax.swing.JToggleButton dieButton2;
@@ -445,12 +425,9 @@ public class Jatsi extends javax.swing.JFrame {
     private javax.swing.JToggleButton dieButton5;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem highScoresMenuItem;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newGameMenuItem;
-    private javax.swing.JDialog numberDialog;
     private javax.swing.JButton rollButton;
     // End of variables declaration//GEN-END:variables
 }

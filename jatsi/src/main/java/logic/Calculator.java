@@ -6,30 +6,6 @@ import java.util.Arrays;
  * Luokka tarjoaa metodin pelaajan pisteiden laskemiseen eri noppayhdistelmillä.
  */
 public class Calculator {
-    
-    public static int combinationToInteger(String combination) {
-        switch (combination) {
-            case "ones": return 0;
-            case "twos": return 1;
-            case "threes": return 2;
-            case "fours": return 3;
-            case "fives": return 4;
-            case "sixes": return 5;
-            case "upper total": return 6;
-            case "bonus": return 7;
-            case "pair": return 8;
-            case "two pairs": return 9;
-            case "three of a kind": return 10;
-            case "four of a kind": return 11;
-            case "small straight": return 12;
-            case "large straight": return 13;
-            case "full house": return 14;
-            case "chance": return 15;
-            case "yatzy": return 16;
-            case "total": return 17;
-        }
-        return -1;
-    }
         
     /**
      * Metodi laskee pelaajan saamat pisteet tietyllä noppayhdistelmällä.
