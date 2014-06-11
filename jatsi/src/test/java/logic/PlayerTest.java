@@ -5,17 +5,20 @@ import static org.junit.Assert.*;
 
 public class PlayerTest {
     
+    Player one;
+    
+    public PlayerTest() {
+        this.one = new Player("player");
+    }
+    
     @Test
     public void correctPlayerName() {
-        Player one = new Player();
-        one.setName("playername");
-        assertEquals("playername", one.getName());
+        assertEquals("player", one.getName());
     }
     
     @Test
     public void returnScoreFromCard() {
-        Player two = new Player();
-        assertEquals(-1, two.getScores().scores[0]);
+        assertEquals(-1, one.getScores().scores[0]);
     }
     
 }

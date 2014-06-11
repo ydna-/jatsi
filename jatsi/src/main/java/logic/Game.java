@@ -9,6 +9,9 @@ public class Game {
     
     public Die[] dice;
     public ArrayList<Player> players;
+    public int player;
+    public int turn;
+    public int counter;
     
     /**
      * Konstruktori.
@@ -19,6 +22,9 @@ public class Game {
         for (int i = 0; i < 5; i++) {
             this.dice[i] = new Die();
         }
+        this.player = 0;
+        this.turn = 0;
+        this.counter = 0;
     }
     
     /**
@@ -26,9 +32,16 @@ public class Game {
      * @param name pelaajan nimi
      */
     public void addPlayer(String name) {
-        Player player = new Player();
-        player.setName(name);
-        this.players.add(player);
+        this.players.add(new Player(name));
+    }
+    
+    public void nextPlayer() {
+        if (this.player == players.size() - 1) {
+            this.player = 0;
+            counter++;
+        } else {
+            this.player += 1;
+        }
     }
     
     /**
@@ -55,14 +68,16 @@ public class Game {
      * Metodi lisää pelaajan valitsemasta noppa-yhdistelmästä saadut pisteet pelaajalle.
      * @param combination noppa-yhdistelmä
      * @param player pelaaja
+     * @return pisteet
      */
-    public void putScore(String combination, Player player) {
+    public int putScore(String combination, Player player) {
         int[] numbers = new int[5];
         for (int i = 0; i < 5; i++) {
             numbers[i] = dice[i].getValue();
         }
         int score = Calculator.count(numbers, combination);
         player.getScores().setScore(score, combination);
+        return score;
     }
     
 }

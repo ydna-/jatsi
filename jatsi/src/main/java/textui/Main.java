@@ -38,8 +38,16 @@ public class Main {
      */
     public static void main(String[] args) {
         logic.Game yatzy = new logic.Game();
+        fileio.Highscores highscores = new fileio.Highscores("highscores.dat");
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to a game of Yatzy!");
+        System.out.println("###############");
+        System.out.println("## j a t s i ##");
+        System.out.println("###############");
+        System.out.println("");
+        System.out.println("Welcome to the game!");
+        System.out.println("");
+        System.out.println("Current high scores:");
+        System.out.println(highscores);
         System.out.print("How many players wish to play? ");
         int num = input.nextInt();
         while (num < 1 || num > 6) {
@@ -69,13 +77,13 @@ public class Main {
                         String answer;
                         for (int l = 0; l < 5; l++) {
                             if (!yatzy.dice[l].isLocked()) {
-                                System.out.print("Lock dice number " + (l+1) + "? (y/n) ");
+                                System.out.print("Roll dice number " + (l+1) + "? (y/n) ");
                                 answer = input.nextLine();
-                                if (answer.toLowerCase().startsWith("y")) {
+                                if (!answer.toLowerCase().startsWith("y")) {
                                     yatzy.dice[l].lock();
                                 }
                             } else {
-                                System.out.print("Unlock dice number " + (l+1) + "? (y/n) ");
+                                System.out.print("Roll dice number " + (l+1) + "? (y/n) ");
                                 answer = input.nextLine();
                                 if (answer.toLowerCase().startsWith("y")) {
                                     yatzy.dice[l].unlock();
@@ -86,7 +94,7 @@ public class Main {
                         System.out.print("Which combination to use? ");
                         String combination = input.nextLine().toLowerCase();
                         while (yatzy.players.get(j).getScores().getScore(combination) != -1) {
-                            System.out.print("Please enter a valid combination! ");
+                            System.out.print("Please enter a valid combination: ");
                             combination = input.nextLine().toLowerCase();
                         }
                         yatzy.putScore(combination, yatzy.players.get(j));
@@ -105,11 +113,13 @@ public class Main {
                 player = i;
                 score = yatzy.players.get(i).getScores().getScore("total");
             }
-            System.out.println(yatzy.players.get(i).getName() + " got the following scores: ");
+            System.out.println(yatzy.players.get(i).getName() + " got the following scores:");
             printScores(yatzy.players.get(i).getScores().scores);
+            highscores.addScore(yatzy.players.get(i).getName(), yatzy.players.get(i).getScores().getScore("total"));
         }
         System.out.println(yatzy.players.get(player).getName() + " won! Congratulations!");
-        
+        System.out.println("And here are the high scores again:");
+        System.out.println(highscores);
     }
     
 }

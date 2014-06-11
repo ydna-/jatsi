@@ -5,17 +5,17 @@ import java.io.Serializable;
 /**
  * Luokka mallintaa Yatzy-pelin high scorea.
  */
-public class Highscore implements Serializable {
+public class Highscore implements Serializable, Comparable<Highscore> {
     
     /**
      * Pelaajan nimi.
      */
-    private String name;
+    private final String name;
     
     /**
      * Pelaajan yhteispisteet.
      */
-    private int total;
+    private final int total;
     
     /**
      * Konstruktori.
@@ -33,6 +33,12 @@ public class Highscore implements Serializable {
     
     public int getTotal() {
         return total;
+    }
+    
+    @Override
+    public int compareTo(Highscore that) {
+        int thatTotal = that.getTotal();
+        return thatTotal - this.total;
     }
     
 }

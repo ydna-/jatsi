@@ -16,7 +16,7 @@ public class Highscores {
     /**
      * Tiedosto, jossa high score -listaa säilytetään.
      */
-    private final String FILE = "highscores.dat";
+    private final String FILE;
     
     /**
      * Output stream tiedostoon kirjoittamista varten.
@@ -30,9 +30,11 @@ public class Highscores {
     
     /**
      * Konstruktori.
+     * @param file tiedostonimi
      */
-    public Highscores() {
+    public Highscores(String file) {
         this.highscores = new ArrayList<>();
+        this.FILE = file;
     }
     
     /**
@@ -86,17 +88,16 @@ public class Highscores {
     /**
      * Apumetodi high score -listan tyhjentämistä varten.
      */
-    public void reset() {
+    private void reset() {
         highscores = new ArrayList<>();
         writeFile();
     }
-    
+
     /**
      * Metodi järjestää high score -listan.
      */
     private void sort() {
-        HighscoreComparator comparator = new HighscoreComparator();
-        Collections.sort(highscores, comparator);
+        Collections.sort(highscores);
     }
     
     /**
@@ -129,7 +130,7 @@ public class Highscores {
             max = highscores.size();
         }
         for (int i = 0; i < max; i++) {
-            temp += (i+1) + ".\t" + highscores.get(i).getName() + "\t" + highscores.get(i).getTotal() + "\n";
+            temp += (i+1) + ". " + highscores.get(i).getName() + " " + highscores.get(i).getTotal() + "\n";
         }
         return temp;
     }

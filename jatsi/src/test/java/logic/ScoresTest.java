@@ -5,9 +5,14 @@ import static org.junit.Assert.*;
 
 public class ScoresTest {
     
+    Scores card;
+    
+    public ScoresTest() {
+        this.card = new Scores();
+    }
+
     @Test
     public void scoresAreMinusOne() {
-        Scores card = new Scores();
         assertEquals(-1, card.getScore("ones"));
         assertEquals(-1, card.getScore("twos"));
         assertEquals(-1, card.getScore("threes"));
@@ -30,13 +35,11 @@ public class ScoresTest {
     
     @Test
     public void invalidInputReturnsZero() {
-        Scores card = new Scores();
         assertEquals(0, card.getScore("input"));
     }
     
     @Test
     public void scoresSetCorrectly1() {
-        Scores card = new Scores();
         card.setScore(5, "ones");
         card.setScore(10, "twos");
         card.setScore(15, "threes");
@@ -76,7 +79,6 @@ public class ScoresTest {
     
     @Test
     public void scoresSetCorrectly2() {
-        Scores card = new Scores();
         card.setScore(1, "ones");
         card.setScore(2, "twos");
         card.setScore(3, "threes");

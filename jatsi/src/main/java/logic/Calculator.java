@@ -7,6 +7,30 @@ import java.util.Arrays;
  */
 public class Calculator {
     
+    public static int combinationToInteger(String combination) {
+        switch (combination) {
+            case "ones": return 0;
+            case "twos": return 1;
+            case "threes": return 2;
+            case "fours": return 3;
+            case "fives": return 4;
+            case "sixes": return 5;
+            case "upper total": return 6;
+            case "bonus": return 7;
+            case "pair": return 8;
+            case "two pairs": return 9;
+            case "three of a kind": return 10;
+            case "four of a kind": return 11;
+            case "small straight": return 12;
+            case "large straight": return 13;
+            case "full house": return 14;
+            case "chance": return 15;
+            case "yatzy": return 16;
+            case "total": return 17;
+        }
+        return -1;
+    }
+        
     /**
      * Metodi laskee pelaajan saamat pisteet tietyllä noppayhdistelmällä.
      * @param dice pelaajan nopat
@@ -72,15 +96,12 @@ public class Calculator {
      * @return pelaajan pisteet
      */
     private static int countTwoPairs(int[] dice) {
-        int score = 0;
-        int pair = countPair(dice);
-        for (int i = 1; i < 5; i++) {
-            if (dice[i] != pair/2 && dice[i] == dice[i-1]) {
-                score = dice[i];
-            }
-        }
-        if (pair != 0 && score != 0) {
-            return 2 * score + pair;
+        if (dice[0] == dice[1] && dice[2] == dice[3] && dice[0] != dice[2]) {
+            return 2 * dice[0] + 2 * dice[2];
+        } else if (dice[1] == dice[2] && dice[3] == dice[4] && dice[1] != dice[3]) {
+            return 2 * dice[1] + 2 * dice[3];
+        } else if (dice[0] == dice[1] && dice[3] == dice[4] && dice[0] != dice[3]) {
+            return 2 * dice[0] + 2 * dice[3];
         } else {
             return 0;
         }
@@ -92,13 +113,11 @@ public class Calculator {
      * @return pelaajan pisteet
      */
     private static int countThreeOfAKind(int[] dice) {
-        int score = 0;
-        for (int i = 2; i < 5; i++) {
-            if (dice[i-1] == dice[i-2] && dice[i] == dice[i-1]) {
-                score = dice[i];
-            }
+        if (dice[0] == dice[2] || dice[1] == dice[3] || dice[2] == dice[4]) {
+            return 3 * dice[2];
+        } else {
+            return 0;
         }
-        return 3 * score;
     }
     
     /**
@@ -107,13 +126,11 @@ public class Calculator {
      * @return pelaajan pisteet
      */
     private static int countFourOfAKind(int[] dice) {
-        int score = 0;
-        for (int i = 3; i < 5; i++) {
-            if (dice[i-2] == dice[i-3] && dice[i-1] == dice[i-2] && dice[i] == dice[i-1]) {
-                score = dice[i];
-            }
+        if (dice[0] == dice[3] || dice[1] == dice[4]) {
+            return 4 * dice[2];
+        } else {
+            return 0;
         }
-        return 4 * score;
     }
     
     /**
@@ -150,15 +167,10 @@ public class Calculator {
      * @return pelaajan pisteet
      */
     private static int countFullHouse(int[] dice) {
-        int score = 0;
-        int threeOfAKind = countThreeOfAKind(dice);
-        for (int i = 1; i < 5; i++) {
-            if (dice[i] != threeOfAKind/3 && dice[i] == dice[i-1]) {
-                score = dice[i];
-            }
-        }
-        if (threeOfAKind != 0 && score != 0) {
-            return 2 * score + threeOfAKind;
+        if (dice[0] == dice[2] && dice[3] == dice[4] && dice[0] != dice[4]) {
+            return 3 * dice[0] + 2 * dice[4];
+        } else if (dice[0] == dice[1] && dice[2] == dice[4] && dice[0] != dice[4]) {
+            return 2 * dice[0] + 3 * dice[4];
         } else {
             return 0;
         }
@@ -183,12 +195,11 @@ public class Calculator {
      * @return pelaajan pisteet
      */
     private static int countYatzy(int[] dice) {
-        for (int i = 1; i < 5; i++) {
-            if (dice[i] != dice[i-1]) {
-                return 0;
-            }
+        if (dice[0] == dice[4]) {
+            return 50;
+        } else {
+            return 0;
         }
-        return 50;
     }
     
 }

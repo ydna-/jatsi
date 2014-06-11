@@ -17,18 +17,15 @@ public class Player {
     
     /**
      * Konstruktori.
+     * @param name pelaajan nimi
      */
-    public Player() {
-        this.name = "";
+    public Player(String name) {
+        this.name = name;
         this.scores = new Scores();
     }
     
     public String getName() {
         return this.name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
     }
     
     public Scores getScores() {
