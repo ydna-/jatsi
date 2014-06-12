@@ -7,10 +7,29 @@ import java.util.ArrayList;
  */
 public class Game {
     
+    /**
+     * Jatsi-pelin nopat.
+     */
     public Die[] dice;
+    
+    /**
+     * Jatsi-pelin pelaajat.
+     */
     public ArrayList<Player> players;
+    
+    /**
+     * Pelaaja, joka on parhaillaan vuorossa.
+     */
     public int player;
+    
+    /**
+     * Heittovuoro, joka pelaajalla on menossa.
+     */
     public int turn;
+    
+    /**
+     * Muuttuja kuvaa, kuinka monta kierrosta peliä on pelattu.
+     */
     public int counter;
     
     /**
@@ -35,6 +54,9 @@ public class Game {
         this.players.add(new Player(name));
     }
     
+    /**
+     * Metodi kuvaa vuoron siirtymistä seuraavalle pelaajalle.
+     */
     public void nextPlayer() {
         if (this.player == players.size() - 1) {
             this.player = 0;

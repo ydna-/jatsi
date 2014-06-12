@@ -47,13 +47,16 @@ public class Die {
         this.locked = false;
     }
     
+    /**
+     * Metodi vaihtaa nopan lukituksen totuusarvon.
+     */
     public void toggle() {
         this.locked = !locked;
     }
     
     /**
      * Metodi kertoo, onko noppa lukittu vai ei.
-     * @return lukittu
+     * @return lukittu?
      */
     public boolean isLocked() {
         return this.locked;

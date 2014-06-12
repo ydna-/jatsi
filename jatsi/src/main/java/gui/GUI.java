@@ -9,23 +9,35 @@ import fileio.*;
 public class GUI extends javax.swing.JFrame {
 
     /**
-     * Jatsi-peli.
+     * Jatsi-pelin instanssi.
      */
     private Game jatsi;
     
     /**
-     * High score -lista.
+     * High score -lista pelille.
      */
     private final Highscores highscores;
     
+    /**
+     * Taulukko kaikista noppayhdistelmistä pelissä.
+     */
     private final String[] diceCombinations = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "Pair", "Two Pairs", "Three of a Kind", "Four of a Kind", "Small Straight", "Large Straight", "Full House", "Chance", "Yatzy"};
+    
+    /**
+     * Muuttuja kertoo, onko kyseinen peli pakkojatsi (true) vai perusjatsi (false).
+     */
+    private boolean pakkojatsi;
+    
+    /**
+     * Apumuuttuja pakkojatsiin.
+     */
+    private int pakkocounter;
     
     /**
      * Konstruktori.
      */
     public GUI() {
         initComponents();
-        this.jatsi = new Game();
         this.highscores = new Highscores("highscores.dat");
     }
     
@@ -58,7 +70,7 @@ public class GUI extends javax.swing.JFrame {
         }
         return 0;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -278,31 +290,40 @@ public class GUI extends javax.swing.JFrame {
         if (jatsi.turn == 3) {
             jatsi.turn = 0;
             rollButton.setEnabled(false);
-            java.util.ArrayList<String> list = new java.util.ArrayList<>();
-            for (int i = 0; i < diceCombinations.length; i++) {
-                if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
-                    list.add(diceCombinations[i]);
+            if (!pakkojatsi) {
+                java.util.ArrayList<String> list = new java.util.ArrayList<>();
+                for (int i = 0; i < diceCombinations.length; i++) {
+                    if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
+                        list.add(diceCombinations[i]);
+                    }
+                }
+                int index = 0;
+                int max = 0;
+                int[] numbers = new int[5];
+                for (int i = 0; i < 5; i++) {
+                    numbers[i] = jatsi.dice[i].getValue();
+                }
+                for (int i = 0; i < list.size(); i++) {
+                    if (Calculator.count(numbers, list.get(i)) > max) {
+                        index = i;
+                        max = Calculator.count(numbers, list.get(i));
+                    }
+                }
+                Object[] combinations = list.toArray();
+                String combination = null;
+                while (combination == null) {
+                    combination = (String)javax.swing.JOptionPane.showInputDialog(null, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
+                }
+                int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
+                Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
+            } else {
+                int score = jatsi.putScore(diceCombinations[jatsi.counter], jatsi.players.get(jatsi.player));
+                Scorecard.setValueAt(score, pakkocounter, jatsi.player+1);
+                pakkocounter++;
+                if (pakkocounter == 6) {
+                    pakkocounter = 8;
                 }
             }
-            int index = 0;
-            int max = 0;
-            int[] numbers = new int[5];
-            for (int i = 0; i < 5; i++) {
-                numbers[i] = jatsi.dice[i].getValue();
-            }
-            for (int i = 0; i < list.size(); i++) {
-                if (Calculator.count(numbers, list.get(i)) > max) {
-                    index = i;
-                    max = Calculator.count(numbers, list.get(i));
-                }
-            }
-            Object[] combinations = list.toArray();
-            String combination = null;
-            while (combination == null) {
-                combination = (String)javax.swing.JOptionPane.showInputDialog(null, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
-            }
-            int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
-            Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
             if (jatsi.dice[0].isLocked()) {
                 dieButton1.setSelected(false);
             }
@@ -382,13 +403,13 @@ public class GUI extends javax.swing.JFrame {
             dieButton5.setSelected(false);
         }
     }//GEN-LAST:event_dieButton5ActionPerformed
-
+    
     private void highScoresMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highScoresMenuItemActionPerformed
         javax.swing.JOptionPane.showMessageDialog(null, highscores);
     }//GEN-LAST:event_highScoresMenuItemActionPerformed
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
-        jatsi = new Game();
+        this.jatsi = new Game();
         String[] values = {"1", "2", "3", "4", "5", "6"};
         String number = (String)javax.swing.JOptionPane.showInputDialog(null, "How many players wish to play?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
         if (number == null) {
@@ -412,6 +433,14 @@ public class GUI extends javax.swing.JFrame {
                 Scorecard.setValueAt("", i, j);
             }
         }
+        String[] choices = {"Perusjatsi", "Pakkojatsi"};
+        int response = javax.swing.JOptionPane.showOptionDialog(null, "Please choose game mode.", "Input", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.PLAIN_MESSAGE, null, choices, "Perusjatsi");
+        if (response == 0) {
+            pakkojatsi = false;
+        } else {
+            pakkojatsi = true;
+        }
+        pakkocounter = 0;
         rollButton.setEnabled(true);
     }//GEN-LAST:event_newGameMenuItemActionPerformed
     

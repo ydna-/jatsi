@@ -40,53 +40,29 @@ public class Highscores {
     /**
      * Metodi lukee high score -listan tiedostosta.
      */
-    private void readFile() {
-        try {
-            in = new ObjectInputStream(new FileInputStream(FILE));
-            highscores = (ArrayList<Highscore>) in.readObject();
-        } catch (ClassNotFoundException e) {
-            System.err.println("CNF Error while loading: " + e.getMessage());
-        } catch (FileNotFoundException e) {
-            System.err.println("FNF Error while loading: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("IO Error while loading: " + e.getMessage());
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                System.err.println("IO Error while loading: " + e.getMessage());
-            }
+    private void readFile() throws Exception {
+        in = new ObjectInputStream(new FileInputStream(FILE));
+        highscores = (ArrayList<Highscore>) in.readObject();
+        if (in != null) {
+            in.close();
         }
     }
     
     /**
      * Metodi kirjoittaa high score -listan tiedostoon.
      */
-    private void writeFile() {
-        try {
-            out = new ObjectOutputStream(new FileOutputStream(FILE));
-            out.writeObject(highscores);
-        } catch (FileNotFoundException e) {
-            System.err.println("FNF Error while writing: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("IO Error while writing: " + e.getMessage());
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException e) {
-                System.err.println("IO Error while writing: " + e.getMessage());
-            }
+    private void writeFile() throws Exception {
+        out = new ObjectOutputStream(new FileOutputStream(FILE));
+        out.writeObject(highscores);
+        if (out != null) {
+            out.close();
         }
     }
     
     /**
      * Apumetodi high score -listan tyhjentämistä varten.
      */
-    private void reset() {
+    private void reset() throws Exception {
         highscores = new ArrayList<>();
         writeFile();
     }
@@ -104,9 +80,18 @@ public class Highscores {
      * @param score pelaajan pisteet
      */
     public void addScore(String name, int score) {
-        readFile();
+        try {
+            readFile();
+        } catch (Exception e) {
+            System.err.println("Error while loading high scores!" + e.getMessage());
+        }
         highscores.add(new Highscore(name, score));
-        writeFile();
+        sort();
+        try {
+            writeFile();
+        } catch (Exception e) {
+            System.err.println("Error while updating high scores!" + e.getMessage());
+        }
     }
     
     /**
@@ -114,7 +99,11 @@ public class Highscores {
      * @return high score -lista
      */
     public ArrayList<Highscore> getHighscores() {
-        readFile();
+        try {
+            readFile();
+        } catch (Exception e) {
+            System.err.println("Error while loading high scores!" + e.getMessage());
+        }
         sort();
         return highscores;
     }
