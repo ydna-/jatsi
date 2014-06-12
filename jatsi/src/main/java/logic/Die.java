@@ -3,7 +3,7 @@ package logic;
 import java.util.Random;
 
 /**
- * Luokka mallintaa kuusisivuista noppaa Yatzy-noppapelissä.
+ * Luokka mallintaa kuusisivuista noppaa jatsi-noppapelissä.
  */
 public class Die {
 

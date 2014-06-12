@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Luokka tarjoaa metodeja, joilla päivitetään Yatzy-noppapelin high score -listaa.
+ * Luokka tarjoaa metodeja, joilla päivitetään jatsi-noppapelin high score -listaa.
  */
 public class Highscores {
     
@@ -45,19 +45,18 @@ public class Highscores {
             in = new ObjectInputStream(new FileInputStream(FILE));
             highscores = (ArrayList<Highscore>) in.readObject();
         } catch (ClassNotFoundException e) {
-            System.out.println("CNF Error while loading: " + e.getMessage());
+            System.err.println("CNF Error while loading: " + e.getMessage());
         } catch (FileNotFoundException e) {
-            System.out.println("FNF Error while loading: " + e.getMessage());
+            System.err.println("FNF Error while loading: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("IO Error while loading: " + e.getMessage());
+            System.err.println("IO Error while loading: " + e.getMessage());
         } finally {
             try {
-                if (out != null) {
-                    out.flush();
-                    out.close();
+                if (in != null) {
+                    in.close();
                 }
             } catch (IOException e) {
-                System.out.println("IO Error while loading: " + e.getMessage());
+                System.err.println("IO Error while loading: " + e.getMessage());
             }
         }
     }
@@ -70,17 +69,16 @@ public class Highscores {
             out = new ObjectOutputStream(new FileOutputStream(FILE));
             out.writeObject(highscores);
         } catch (FileNotFoundException e) {
-            System.out.println("FNF Error while writing: " + e.getMessage());
+            System.err.println("FNF Error while writing: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("IO Error while writing: " + e.getMessage());
+            System.err.println("IO Error while writing: " + e.getMessage());
         } finally {
             try {
                 if (out != null) {
-                    out.flush();
                     out.close();
                 }
             } catch (IOException e) {
-                System.out.println("IO Error while writing: " + e.getMessage());
+                System.err.println("IO Error while writing: " + e.getMessage());
             }
         }
     }

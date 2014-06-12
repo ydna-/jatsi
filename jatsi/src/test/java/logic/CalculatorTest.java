@@ -5,6 +5,12 @@ import static org.junit.Assert.*;
 
 public class CalculatorTest {
     
+    Calculator calc;
+    
+    public CalculatorTest() {
+        this.calc = new Calculator();
+    }
+    
     @Test
     public void correctOnes1() {
         int[] dice = {3, 1, 4, 1, 5};

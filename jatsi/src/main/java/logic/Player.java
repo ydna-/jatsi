@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Luokka mallintaa Yatzy-noppapelin pelaajaa.
+ * Luokka mallintaa jatsi-noppapelin pelaajaa.
  */
 public class Player {
     

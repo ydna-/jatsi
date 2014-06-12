@@ -3,7 +3,7 @@ package fileio;
 import java.io.Serializable;
 
 /**
- * Luokka mallintaa Yatzy-pelin high scorea.
+ * Luokka mallintaa jatsi-pelin high scorea.
  */
 public class Highscore implements Serializable, Comparable<Highscore> {
     

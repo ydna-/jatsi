@@ -2,10 +2,9 @@ package gui;
 
 import logic.*;
 import fileio.*;
-import javax.swing.JOptionPane;
 
 /**
- * Graafinen käyttöliittymä Yatzy-noppapelille.
+ * Graafinen käyttöliittymä jatsi-noppapelille.
  */
 public class GUI extends javax.swing.JFrame {
 
@@ -17,7 +16,9 @@ public class GUI extends javax.swing.JFrame {
     /**
      * High score -lista.
      */
-    private Highscores highscores;
+    private final Highscores highscores;
+    
+    private final String[] diceCombinations = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "Pair", "Two Pairs", "Three of a Kind", "Four of a Kind", "Small Straight", "Large Straight", "Full House", "Chance", "Yatzy"};
     
     /**
      * Konstruktori.
@@ -34,6 +35,7 @@ public class GUI extends javax.swing.JFrame {
      * @return noppayhdistelmä kokonaislukuna
      */
     private static int combinationToInteger(String combination) {
+        combination = combination.toLowerCase();
         switch (combination) {
             case "ones": return 0;
             case "twos": return 1;
@@ -131,15 +133,15 @@ public class GUI extends javax.swing.JFrame {
         Scorecard.setValueAt("Fours", 3, 0);
         Scorecard.setValueAt("Fives", 4, 0);
         Scorecard.setValueAt("Sixes", 5, 0);
-        Scorecard.setValueAt("Upper total", 6, 0);
+        Scorecard.setValueAt("Upper Total", 6, 0);
         Scorecard.setValueAt("Bonus", 7, 0);
         Scorecard.setValueAt("Pair", 8, 0);
-        Scorecard.setValueAt("Two pairs", 9, 0);
-        Scorecard.setValueAt("Three of a kind", 10, 0);
-        Scorecard.setValueAt("Four of a kind", 11, 0);
-        Scorecard.setValueAt("Small straight", 12, 0);
-        Scorecard.setValueAt("Large straight", 13, 0);
-        Scorecard.setValueAt("Full house", 14, 0);
+        Scorecard.setValueAt("Two Pairs", 9, 0);
+        Scorecard.setValueAt("Three of a Kind", 10, 0);
+        Scorecard.setValueAt("Four of a Kind", 11, 0);
+        Scorecard.setValueAt("Small Straight", 12, 0);
+        Scorecard.setValueAt("Large Straight", 13, 0);
+        Scorecard.setValueAt("Full House", 14, 0);
         Scorecard.setValueAt("Chance", 15, 0);
         Scorecard.setValueAt("Yatzy", 16, 0);
         Scorecard.setValueAt("TOTAL", 17, 0);
@@ -276,9 +278,28 @@ public class GUI extends javax.swing.JFrame {
         if (jatsi.turn == 3) {
             jatsi.turn = 0;
             rollButton.setEnabled(false);
-            String combination = JOptionPane.showInputDialog("Which combination do you want to use?");
-            while (jatsi.players.get(jatsi.player).getScores().getScore(combination) != -1) {
-                combination = JOptionPane.showInputDialog("Please enter a valid combination!");
+            java.util.ArrayList<String> list = new java.util.ArrayList<>();
+            for (int i = 0; i < diceCombinations.length; i++) {
+                if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
+                    list.add(diceCombinations[i]);
+                }
+            }
+            int index = 0;
+            int max = 0;
+            int[] numbers = new int[5];
+            for (int i = 0; i < 5; i++) {
+                numbers[i] = jatsi.dice[i].getValue();
+            }
+            for (int i = 0; i < list.size(); i++) {
+                if (Calculator.count(numbers, list.get(i)) > max) {
+                    index = i;
+                    max = Calculator.count(numbers, list.get(i));
+                }
+            }
+            Object[] combinations = list.toArray();
+            String combination = null;
+            while (combination == null) {
+                combination = (String)javax.swing.JOptionPane.showInputDialog(null, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
             }
             int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
             Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
@@ -302,7 +323,7 @@ public class GUI extends javax.swing.JFrame {
                 jatsi.nextPlayer();
                 rollButton.setEnabled(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Game over!");
+                javax.swing.JOptionPane.showMessageDialog(null, "Game over!");
                 int winner = 0;
                 int winningScore = 0;
                 for (int i = 0; i < jatsi.players.size(); i++) {
@@ -317,9 +338,7 @@ public class GUI extends javax.swing.JFrame {
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("total"), 17, i+1);
                     highscores.addScore(jatsi.players.get(i).getName(), jatsi.players.get(i).getScores().getScore("total"));
                 }
-                JOptionPane.showMessageDialog(null, jatsi.players.get(winner).getName() + "won with " + winningScore + " points!");
-                this.jatsi = new Game();
-                initComponents();
+                javax.swing.JOptionPane.showMessageDialog(null, jatsi.players.get(winner).getName() + " won with " + winningScore + " points!");
             }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
@@ -365,21 +384,31 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dieButton5ActionPerformed
 
     private void highScoresMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highScoresMenuItemActionPerformed
-        JOptionPane.showMessageDialog(null, highscores);
+        javax.swing.JOptionPane.showMessageDialog(null, highscores);
     }//GEN-LAST:event_highScoresMenuItemActionPerformed
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
+        jatsi = new Game();
         String[] values = {"1", "2", "3", "4", "5", "6"};
-        String number = (String)JOptionPane.showInputDialog(null, "How many players wish to play?", "Input", JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+        String number = (String)javax.swing.JOptionPane.showInputDialog(null, "How many players wish to play?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+        if (number == null) {
+            return;
+        }
         int numberOfPlayers = Integer.parseInt(number);
-        String name;
+        String name = "";
         for (int i = 0; i < numberOfPlayers; i++) {
-            name = JOptionPane.showInputDialog("Player " + (i+1) + ", please enter your name.");
+            while (name.equals("")) {
+                name = javax.swing.JOptionPane.showInputDialog("Player " + (i+1) + ", please enter your name.");
+                if (name == null) {
+                    return;
+                }
+            }
             jatsi.addPlayer(name);
             Scorecard.getColumnModel().getColumn(i+1).setHeaderValue(name);
+            name = "";
         }
         for (int i = 0; i < 18; i++) {
-            for (int j = 1; j < 6; j++) {
+            for (int j = 1; j < 7; j++) {
                 Scorecard.setValueAt("", i, j);
             }
         }

@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Luokka mallintaa Yatzy-noppapelin pelaajan pistetaulukkoa.
+ * Luokka mallintaa jatsi-noppapelin pelaajan pistetaulukkoa.
  */
 public class Scores {
     
@@ -26,6 +26,7 @@ public class Scores {
      * @return yhdistelmän pisteet
      */
     public int getScore(String combination) {
+        combination = combination.toLowerCase();
         switch (combination) {
             case "ones": return scores[0];
             case "twos": return scores[1];
@@ -55,6 +56,7 @@ public class Scores {
      * @param combination noppayhdistelmä
      */
     public void setScore(int score, String combination) {
+        combination = combination.toLowerCase();
         switch (combination) {
             case "ones": scores[0] = score; break;
             case "twos": scores[1] = score; break;

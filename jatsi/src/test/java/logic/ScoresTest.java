@@ -116,4 +116,43 @@ public class ScoresTest {
         assertEquals(48, card.getScore("total"));
     }
     
+    @Test
+    public void scoresSetCorrectly3() {
+        card.setScore(3, "ones");
+        card.setScore(6, "twos");
+        card.setScore(9, "threes");
+        card.setScore(12, "fours");
+        card.setScore(15, "fives");
+        card.setScore(18, "sixes");
+        card.setScore(10, "pair");
+        card.setScore(18, "two pairs");
+        card.setScore(15, "three of a kind");
+        card.setScore(20, "four of a kind");
+        card.setScore(15, "small straight");
+        card.setScore(20, "large straight");
+        card.setScore(22, "full house");
+        card.setScore(30, "chance");
+        card.setScore(50, "yatzy");
+        card.setUpperTotal();
+        card.setTotal();
+        assertEquals(3, card.getScore("ones"));
+        assertEquals(6, card.getScore("twos"));
+        assertEquals(9, card.getScore("threes"));
+        assertEquals(12, card.getScore("fours"));
+        assertEquals(15, card.getScore("fives"));
+        assertEquals(18, card.getScore("sixes"));
+        assertEquals(10, card.getScore("pair"));
+        assertEquals(18, card.getScore("two pairs"));
+        assertEquals(15, card.getScore("three of a kind"));
+        assertEquals(20, card.getScore("four of a kind"));
+        assertEquals(15, card.getScore("small straight"));
+        assertEquals(20, card.getScore("large straight"));
+        assertEquals(22, card.getScore("full house"));
+        assertEquals(30, card.getScore("chance"));
+        assertEquals(50, card.getScore("yatzy"));
+        assertEquals(63, card.getScore("upper total"));
+        assertEquals(50, card.getScore("bonus"));
+        assertEquals(313, card.getScore("total"));
+    }
+    
 }

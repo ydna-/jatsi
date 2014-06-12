@@ -15,6 +15,7 @@ public class Calculator {
      */
     public static int count(int[] dice, String combination) {
         Arrays.sort(dice);
+        combination = combination.toLowerCase();
         switch (combination) {
             case "ones": return countDice(dice, 1);
             case "twos": return countDice(dice, 2);

@@ -3,7 +3,7 @@ package logic;
 import java.util.ArrayList;
 
 /**
- * Luokka mallintaa Yatzy-noppapeliä.
+ * Luokka mallintaa jatsi-noppapeliä.
  */
 public class Game {
     
