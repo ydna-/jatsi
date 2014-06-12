@@ -29,15 +29,11 @@ public class GUI extends javax.swing.JFrame {
     private boolean pakkojatsi;
     
     /**
-     * Apumuuttuja pakkojatsiin.
-     */
-    private int pakkocounter;
-    
-    /**
      * Konstruktori.
      */
     public GUI() {
         initComponents();
+        this.jatsi = new Game();
         this.highscores = new Highscores("highscores.dat");
     }
     
@@ -80,7 +76,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane = new javax.swing.JScrollPane();
         Scorecard = new javax.swing.JTable();
         rollButton = new javax.swing.JButton();
         dieButton1 = new javax.swing.JToggleButton();
@@ -88,6 +84,8 @@ public class GUI extends javax.swing.JFrame {
         dieButton3 = new javax.swing.JToggleButton();
         dieButton4 = new javax.swing.JToggleButton();
         dieButton5 = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         newGameMenuItem = new javax.swing.JMenuItem();
@@ -119,7 +117,7 @@ public class GUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "", "Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"
+                "Combination", "Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"
             }
         ) {
             Class[] types = new Class [] {
@@ -138,7 +136,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         Scorecard.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(Scorecard);
+        jScrollPane.setViewportView(Scorecard);
+        if (Scorecard.getColumnModel().getColumnCount() > 0) {
+            Scorecard.getColumnModel().getColumn(0).setResizable(false);
+            Scorecard.getColumnModel().getColumn(1).setResizable(false);
+            Scorecard.getColumnModel().getColumn(2).setResizable(false);
+            Scorecard.getColumnModel().getColumn(3).setResizable(false);
+            Scorecard.getColumnModel().getColumn(4).setResizable(false);
+            Scorecard.getColumnModel().getColumn(5).setResizable(false);
+            Scorecard.getColumnModel().getColumn(6).setResizable(false);
+        }
         Scorecard.setValueAt("Ones", 0, 0);
         Scorecard.setValueAt("Twos", 1, 0);
         Scorecard.setValueAt("Threes", 2, 0);
@@ -235,27 +242,27 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 177, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dieButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dieButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dieButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dieButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dieButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2)))
-                .addContainerGap())
+                        .addComponent(dieButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dieButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dieButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dieButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dieButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -267,9 +274,12 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(dieButton4)
                     .addComponent(dieButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rollButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(rollButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -282,6 +292,7 @@ public class GUI extends javax.swing.JFrame {
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         jatsi.rollDice();
         jatsi.turn++;
+        jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
         dieButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[0].getValue() + ".png")));
         dieButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[1].getValue() + ".png")));
         dieButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[2].getValue() + ".png")));
@@ -318,11 +329,7 @@ public class GUI extends javax.swing.JFrame {
                 Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
             } else {
                 int score = jatsi.putScore(diceCombinations[jatsi.counter], jatsi.players.get(jatsi.player));
-                Scorecard.setValueAt(score, pakkocounter, jatsi.player+1);
-                pakkocounter++;
-                if (pakkocounter == 6) {
-                    pakkocounter = 8;
-                }
+                Scorecard.setValueAt(score, combinationToInteger(diceCombinations[jatsi.counter]), jatsi.player+1);
             }
             if (jatsi.dice[0].isLocked()) {
                 dieButton1.setSelected(false);
@@ -343,8 +350,9 @@ public class GUI extends javax.swing.JFrame {
                 jatsi.freeDice();
                 jatsi.nextPlayer();
                 rollButton.setEnabled(true);
+                jTextField1.setText(jatsi.players.get(jatsi.player).getName() + ", it's your turn to roll.");
+                jTextField2.setText("You have 3 rolls left.");
             } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Game over!");
                 int winner = 0;
                 int winningScore = 0;
                 for (int i = 0; i < jatsi.players.size(); i++) {
@@ -359,7 +367,8 @@ public class GUI extends javax.swing.JFrame {
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("total"), 17, i+1);
                     highscores.addScore(jatsi.players.get(i).getName(), jatsi.players.get(i).getScores().getScore("total"));
                 }
-                javax.swing.JOptionPane.showMessageDialog(null, jatsi.players.get(winner).getName() + " won with " + winningScore + " points!");
+                jTextField1.setText("Game over.");
+                jTextField2.setText(jatsi.players.get(winner).getName() + " won with " + winningScore + " points.");
             }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
@@ -440,8 +449,9 @@ public class GUI extends javax.swing.JFrame {
         } else {
             pakkojatsi = true;
         }
-        pakkocounter = 0;
         rollButton.setEnabled(true);
+        jTextField1.setText(jatsi.players.get(jatsi.player).getName() + ", it's your turn to roll.");
+        jTextField2.setText("You have 3 rolls left.");
     }//GEN-LAST:event_newGameMenuItemActionPerformed
     
     /**
@@ -483,7 +493,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton dieButton5;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem highScoresMenuItem;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newGameMenuItem;
     private javax.swing.JButton rollButton;

@@ -13,4 +13,4 @@
 * 11.06.2014 04.00-08.00 GUI valmis. (Note to self: never again)
 * 11.06.2014 16.00-17.30 Testejä ja GUI:ta säädetty.
 * 11.06.2014 22.30-00.00 Sama jatkuu.
-* 12.06.2014 15.45-19.15 Bugeja fiksattu, pakkojatsi valmis.
+* 12.06.2014 15.45-20.00 Bugeja fiksattu, pakkojatsi valmis.
