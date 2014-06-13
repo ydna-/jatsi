@@ -6,7 +6,7 @@ import fileio.*;
 /**
  * Graafinen käyttöliittymä jatsi-noppapelille.
  */
-public class GUI extends javax.swing.JFrame {
+public class JatsiGUI extends javax.swing.JFrame {
 
     /**
      * Jatsi-pelin instanssi.
@@ -31,7 +31,7 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Konstruktori.
      */
-    public GUI() {
+    public JatsiGUI() {
         initComponents();
         this.jatsi = new Game();
         this.highscores = new Highscores("highscores.dat");
@@ -303,15 +303,14 @@ public class GUI extends javax.swing.JFrame {
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         jatsi.rollDice();
-        jatsi.turn++;
+        jatsi.nextTurn();
         jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
         dieButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[0].getValue() + ".png")));
         dieButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[1].getValue() + ".png")));
         dieButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[2].getValue() + ".png")));
         dieButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[3].getValue() + ".png")));
         dieButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[4].getValue() + ".png")));
-        if (jatsi.turn == 3) {
-            jatsi.turn = 0;
+        if (jatsi.turn == 0) {
             rollButton.setEnabled(false);
             if (!pakkojatsi) {
                 java.util.ArrayList<String> list = new java.util.ArrayList<>();
@@ -335,7 +334,7 @@ public class GUI extends javax.swing.JFrame {
                 Object[] combinations = list.toArray();
                 String combination = null;
                 while (combination == null) {
-                    combination = (String)javax.swing.JOptionPane.showInputDialog(null, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
+                    combination = (String)javax.swing.JOptionPane.showInputDialog(rootPane, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
                 }
                 int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
                 Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
@@ -426,13 +425,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_dieButton5ActionPerformed
     
     private void highScoresMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highScoresMenuItemActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(null, highscores);
+        javax.swing.JOptionPane.showMessageDialog(rootPane, highscores);
     }//GEN-LAST:event_highScoresMenuItemActionPerformed
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
         this.jatsi = new Game();
         String[] values = {"1", "2", "3", "4", "5", "6"};
-        String number = (String)javax.swing.JOptionPane.showInputDialog(null, "How many players wish to play?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+        String number = (String)javax.swing.JOptionPane.showInputDialog(rootPane, "How many players wish to play?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
         if (number == null) {
             return;
         }
@@ -440,7 +439,7 @@ public class GUI extends javax.swing.JFrame {
         String name = "";
         for (int i = 0; i < numberOfPlayers; i++) {
             while (name.equals("")) {
-                name = javax.swing.JOptionPane.showInputDialog("Player " + (i+1) + ", please enter your name.");
+                name = javax.swing.JOptionPane.showInputDialog(rootPane, "Player " + (i+1) + ", please enter your name.");
                 if (name == null) {
                     return;
                 }
@@ -455,7 +454,7 @@ public class GUI extends javax.swing.JFrame {
             }
         }
         String[] choices = {"Perusjatsi", "Pakkojatsi"};
-        int response = javax.swing.JOptionPane.showOptionDialog(null, "Please choose game mode.", "Input", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.PLAIN_MESSAGE, null, choices, "Perusjatsi");
+        int response = javax.swing.JOptionPane.showOptionDialog(rootPane, "Please choose game mode.", "Game mode", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.PLAIN_MESSAGE, null, choices, "Perusjatsi");
         if (response == 0) {
             pakkojatsi = false;
         } else {
@@ -473,7 +472,7 @@ public class GUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new JatsiGUI().setVisible(true);
             }
         });
     }

@@ -58,11 +58,17 @@ public class Game {
      * Metodi kuvaa vuoron siirtymistä seuraavalle pelaajalle.
      */
     public void nextPlayer() {
-        if (this.player == players.size() - 1) {
+        this.player += 1;
+        if (this.player == this.players.size()) {
             this.player = 0;
-            counter++;
-        } else {
-            this.player += 1;
+            this.counter++;
+        }
+    }
+    
+    public void nextTurn() {
+        this.turn += 1;
+        if (this.turn == 3) {
+            this.turn = 0;
         }
     }
     

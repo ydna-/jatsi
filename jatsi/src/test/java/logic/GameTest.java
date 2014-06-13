@@ -47,6 +47,17 @@ public class GameTest {
     }
     
     @Test
+    public void nextTurnMethodWorks() {
+        assertEquals(0, yatzy.turn);
+        yatzy.nextTurn();
+        assertEquals(1, yatzy.turn);
+        yatzy.nextTurn();
+        assertEquals(2, yatzy.turn);
+        yatzy.nextTurn();
+        assertEquals(0, yatzy.turn);
+    }
+    
+    @Test
     public void diceValuesChangeWhenRolled() {
         yatzy.rollDice();
         for (int i = 0; i < 5; i++) {
