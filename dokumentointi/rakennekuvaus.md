@@ -1,0 +1,5 @@
+Jatsi-noppapelin logiikka on tallennettu logic-pakettiin. Luokka Game sisältää 1-6 Player-luokan ilmentymää, käyttäjän syötteestä riippuen, ja 5 Die-luokan ilmentymää. Luokka Game siis mallintaa Jatsi-noppapeliä kokonaisuudessaan. Lisäksi Game käyttää luokkaa Calculator, joka sisältää metodeja, joilla lasketaan pelaajan pistetaulukon pisteitä. Itse pistetaulukkoa mallintaa Scores-luokka, ja jokaiseen Player-luokan ilmentymään liittyy yksi Scores-luokan ilmentymä. Lisäksi Player-luokassa on muuttujana pelaajan nimi. Die-luokka mallintaa kuusisivuista noppaa muuttujilla value, joka saa satunnaisesti kokonaislukuarvoja väliltä 1-6, ja locked, joka kuvaa nopan tilaa.
+
+High score -listaa käsittelee fileio-paketin luokat, joista Highscores sisältää mielivaltaisen paljon Highscore -luokan ilmentymiä. Nämä tallennetaan tiedostoon ja päivitetään automaattisesti.
+
+Pelin tapahtumiin (esim. nopan heittäminen) reagoi käyttöliittymän luokka JatsiGUI, joka sisältää aina yhden Jatsi-pelin instanssin. Lisäksi tämä luokka huolehtii high scores -listan päivittämisestä, joten siihen sisältyy myös Highscores -luokka.
