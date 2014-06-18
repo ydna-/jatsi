@@ -4,67 +4,34 @@ import logic.*;
 import fileio.*;
 
 /**
- * Graafinen käyttöliittymä jatsi-noppapelille.
+ * Graphical user interface for the dice game Jatsi.
  */
 public class JatsiGUI extends javax.swing.JFrame {
 
     /**
-     * Jatsi-pelin instanssi.
+     * Instance of the game.
      */
     private Game jatsi;
     
     /**
-     * High score -lista pelille.
+     * High score list of the game.
      */
     private final Highscores highscores;
     
     /**
-     * Taulukko kaikista noppayhdistelmistä pelissä.
+     * Array of dice combinations.
      */
-    private final String[] diceCombinations = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "Pair", "Two Pairs", "Three of a Kind", "Four of a Kind", "Small Straight", "Large Straight", "Full House", "Chance", "Yatzy"};
+    private final String[] diceCombinations = {"Ones", "Twos", "Threes", "Fours", "Fives", "Sixes",
+        "Pair", "Two Pairs", "Three of a Kind", "Four of a Kind", "Small Straight", "Large Straight",
+        "Full House", "Chance", "Yatzy"};
     
     /**
-     * Muuttuja kertoo, onko kyseinen peli pakkojatsi (true) vai perusjatsi (false).
-     */
-    private boolean pakkojatsi;
-    
-    /**
-     * Konstruktori.
+     * Class constructor.
      */
     public JatsiGUI() {
         initComponents();
         this.jatsi = new Game();
         this.highscores = new Highscores("highscores.dat");
-    }
-    
-    /**
-     * Metodi muuttaa noppayhdistelmän kokonaisluvuksi, jota käytetään taulukon indekseissä.
-     * @param combination noppayhdistelmä
-     * @return noppayhdistelmä kokonaislukuna
-     */
-    private static int combinationToInteger(String combination) {
-        combination = combination.toLowerCase();
-        switch (combination) {
-            case "ones": return 0;
-            case "twos": return 1;
-            case "threes": return 2;
-            case "fours": return 3;
-            case "fives": return 4;
-            case "sixes": return 5;
-            case "upper total": return 6;
-            case "bonus": return 7;
-            case "pair": return 8;
-            case "two pairs": return 9;
-            case "three of a kind": return 10;
-            case "four of a kind": return 11;
-            case "small straight": return 12;
-            case "large straight": return 13;
-            case "full house": return 14;
-            case "chance": return 15;
-            case "yatzy": return 16;
-            case "total": return 17;
-        }
-        return 0;
     }
     
     /**
@@ -119,7 +86,7 @@ public class JatsiGUI extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Combination", "Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6"
+                "Combination", "", "", "", "", "", ""
             }
         ) {
             Class[] types = new Class [] {
@@ -300,86 +267,99 @@ public class JatsiGUI extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
-        jatsi.rollDice();
-        jatsi.nextTurn();
-        jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
+    
+    private void setDieButtonIcons() {
         dieButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[0].getValue() + ".png")));
         dieButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[1].getValue() + ".png")));
         dieButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[2].getValue() + ".png")));
         dieButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[3].getValue() + ".png")));
         dieButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/die_" + jatsi.dice[4].getValue() + ".png")));
+    }
+    
+    private void unselectDieButtons() {
+        if (jatsi.dice[0].isLocked()) {
+            dieButton1.setSelected(false);
+        }
+        if (jatsi.dice[1].isLocked()) {
+            dieButton2.setSelected(false);
+        }
+        if (jatsi.dice[2].isLocked()) {
+            dieButton3.setSelected(false);
+        }
+        if (jatsi.dice[3].isLocked()) {
+            dieButton4.setSelected(false);
+        }
+        if (jatsi.dice[4].isLocked()) {
+            dieButton5.setSelected(false);
+        }
+    }
+    
+    private java.util.ArrayList<String> availableCombinations() {
+        java.util.ArrayList<String> list = new java.util.ArrayList<>();
+            for (int i = 0; i < diceCombinations.length; i++) {
+                if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
+                    list.add(diceCombinations[i]);
+            }
+        }
+        return list;
+    }
+    
+    private int indexOfBestCombination(java.util.ArrayList<String> list) {
+        int index = 0;
+        int max = 0;
+        int[] numbers = new int[5];
+        for (int i = 0; i < 5; i++) {
+            numbers[i] = jatsi.dice[i].getValue();
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (Calculator.count(numbers, list.get(i)) > max) {
+                index = i;
+                max = Calculator.count(numbers, list.get(i));
+            }
+        }
+        return index;
+    }
+    
+    private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
+        jatsi.rollDice();
+        jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
+        setDieButtonIcons();
         if (jatsi.turn == 0) {
             rollButton.setEnabled(false);
-            if (!pakkojatsi) {
-                java.util.ArrayList<String> list = new java.util.ArrayList<>();
-                for (int i = 0; i < diceCombinations.length; i++) {
-                    if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
-                        list.add(diceCombinations[i]);
-                    }
-                }
-                int index = 0;
-                int max = 0;
-                int[] numbers = new int[5];
-                for (int i = 0; i < 5; i++) {
-                    numbers[i] = jatsi.dice[i].getValue();
-                }
-                for (int i = 0; i < list.size(); i++) {
-                    if (Calculator.count(numbers, list.get(i)) > max) {
-                        index = i;
-                        max = Calculator.count(numbers, list.get(i));
-                    }
-                }
+            if (!jatsi.forced) {
+                java.util.ArrayList<String> list = availableCombinations();
+                int index = indexOfBestCombination(list);
                 Object[] combinations = list.toArray();
                 String combination = null;
                 while (combination == null) {
-                    combination = (String)javax.swing.JOptionPane.showInputDialog(rootPane, "Which combination do you want to use?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, combinations, combinations[index]);
+                    combination = (String) javax.swing.JOptionPane.showInputDialog(rootPane, 
+                            "Which combination do you want to use?", "Dice combination", 
+                            javax.swing.JOptionPane.QUESTION_MESSAGE, null, 
+                            combinations, combinations[index]);
                 }
-                int score = jatsi.putScore(combination, jatsi.players.get(jatsi.player));
-                Scorecard.setValueAt(score, combinationToInteger(combination), jatsi.player+1);
+                int score = jatsi.putScore(combination);
+                Scorecard.setValueAt(score, Scores.combinationToInteger(combination), jatsi.player+1);
             } else {
-                int score = jatsi.putScore(diceCombinations[jatsi.counter], jatsi.players.get(jatsi.player));
-                Scorecard.setValueAt(score, combinationToInteger(diceCombinations[jatsi.counter]), jatsi.player+1);
+                int score = jatsi.putScore(diceCombinations[jatsi.counter]);
+                Scorecard.setValueAt(score, Scores.combinationToInteger(diceCombinations[jatsi.counter]), jatsi.player+1);
             }
-            if (jatsi.dice[0].isLocked()) {
-                dieButton1.setSelected(false);
-            }
-            if (jatsi.dice[1].isLocked()) {
-                dieButton2.setSelected(false);
-            }
-            if (jatsi.dice[2].isLocked()) {
-                dieButton3.setSelected(false);
-            }
-            if (jatsi.dice[3].isLocked()) {
-                dieButton4.setSelected(false);
-            }
-            if (jatsi.dice[4].isLocked()) {
-                dieButton5.setSelected(false);
-            }
+            unselectDieButtons();
             if (!(jatsi.counter == 14 && jatsi.player == jatsi.players.size()-1)) {
                 jatsi.freeDice();
-                jatsi.nextPlayer();
                 rollButton.setEnabled(true);
                 jTextField1.setText(jatsi.players.get(jatsi.player).getName() + ", it's your turn to roll.");
                 jTextField2.setText("You have 3 rolls left.");
             } else {
-                int winner = 0;
-                int winningScore = 0;
+                int winner = jatsi.endGame();
                 for (int i = 0; i < jatsi.players.size(); i++) {
-                    jatsi.players.get(i).getScores().setUpperTotal();
-                    jatsi.players.get(i).getScores().setTotal();
-                    if (winningScore < jatsi.players.get(i).getScores().getScore("total")) {
-                        winner = i;
-                        winningScore = jatsi.players.get(i).getScores().getScore("total");
-                    }
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("upper total"), 6, i+1);
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("bonus"), 7, i+1);
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("total"), 17, i+1);
                     highscores.addScore(jatsi.players.get(i).getName(), jatsi.players.get(i).getScores().getScore("total"));
                 }
                 jTextField1.setText("Game over!");
-                jTextField2.setText(jatsi.players.get(winner).getName() + " won with " + winningScore + " points.");
+                jTextField2.setText(jatsi.players.get(winner).getName() + " won with " + 
+                        jatsi.players.get(winner).getScores().getScore("total") + " points!");
             }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
@@ -431,7 +411,9 @@ public class JatsiGUI extends javax.swing.JFrame {
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
         this.jatsi = new Game();
         String[] values = {"1", "2", "3", "4", "5", "6"};
-        String number = (String)javax.swing.JOptionPane.showInputDialog(rootPane, "How many players wish to play?", "Input", javax.swing.JOptionPane.INFORMATION_MESSAGE, null, values, values[0]);
+        String number = (String) javax.swing.JOptionPane.showInputDialog(rootPane, 
+                "How many players wish to play?", "Number of players", 
+                javax.swing.JOptionPane.QUESTION_MESSAGE, null, values, values[0]);
         if (number == null) {
             return;
         }
@@ -439,13 +421,15 @@ public class JatsiGUI extends javax.swing.JFrame {
         String name = "";
         for (int i = 0; i < numberOfPlayers; i++) {
             while (name.equals("")) {
-                name = javax.swing.JOptionPane.showInputDialog(rootPane, "Player " + (i+1) + ", please enter your name.");
+                name = javax.swing.JOptionPane.showInputDialog(rootPane, 
+                        "Player " + (i+1) + ", please enter your name.");
                 if (name == null) {
                     return;
                 }
             }
             jatsi.addPlayer(name);
-            Scorecard.getColumnModel().getColumn(i+1).setHeaderValue(name);
+            Scorecard.getTableHeader().getColumnModel().getColumn(i+1).setHeaderValue(name);
+            Scorecard.getTableHeader().repaint();
             name = "";
         }
         for (int i = 0; i < 18; i++) {
@@ -454,11 +438,12 @@ public class JatsiGUI extends javax.swing.JFrame {
             }
         }
         String[] choices = {"Perusjatsi", "Pakkojatsi"};
-        int response = javax.swing.JOptionPane.showOptionDialog(rootPane, "Please choose game mode.", "Game mode", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.PLAIN_MESSAGE, null, choices, "Perusjatsi");
-        if (response == 0) {
-            pakkojatsi = false;
-        } else {
-            pakkojatsi = true;
+        int response = javax.swing.JOptionPane.showOptionDialog(rootPane, 
+                "Please choose game mode.", "Game mode", 
+                javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE, 
+                null, choices, choices[0]);
+        if (response != 0) {
+            jatsi.forced = true;
         }
         rollButton.setEnabled(true);
         jTextField1.setText(jatsi.players.get(jatsi.player).getName() + ", it's your turn to roll.");

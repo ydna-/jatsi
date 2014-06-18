@@ -14,3 +14,5 @@
 * 11.06.2014 16.00-17.30 Testejä ja GUI:ta säädetty.
 * 11.06.2014 22.30-00.00 Sama jatkuu.
 * 12.06.2014 15.45-20.00 Bugeja fiksattu, pakkojatsi valmis.
+* 13.06.2014 11.00-13.00 Jar-tiedosto, Javadoc, dokumentointia.
+* 18.06.2014 15.00-19.00 Viimeistelyä.

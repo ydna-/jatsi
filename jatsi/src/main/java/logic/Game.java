@@ -3,37 +3,42 @@ package logic;
 import java.util.ArrayList;
 
 /**
- * Luokka mallintaa jatsi-noppapeliä.
+ * Represents the dice game as a whole and contains methods for game flow.
  */
 public class Game {
     
     /**
-     * Jatsi-pelin nopat.
+     * The dice of the game.
      */
     public Die[] dice;
     
     /**
-     * Jatsi-pelin pelaajat.
+     * The players of the game.
      */
     public ArrayList<Player> players;
     
     /**
-     * Pelaaja, joka on parhaillaan vuorossa.
+     * Index of the player currently playing.
      */
     public int player;
     
     /**
-     * Heittovuoro, joka pelaajalla on menossa.
+     * Turn number of the player currently playing.
      */
     public int turn;
     
     /**
-     * Muuttuja kuvaa, kuinka monta kierrosta peliä on pelattu.
+     * Number of rounds played.
      */
     public int counter;
     
     /**
-     * Konstruktori.
+     * Is true if the game mode is forced.
+     */
+    public boolean forced;
+    
+    /**
+     * Creates a new game.
      */
     public Game() {
         this.dice = new Die[5];
@@ -44,18 +49,29 @@ public class Game {
         this.player = 0;
         this.turn = 0;
         this.counter = 0;
+        this.forced = false;
     }
     
     /**
-     * Metodi lisää peliin pelaajan.
-     * @param name pelaajan nimi
+     * Adds a new player to the game.
+     * @param name Player's name.
      */
     public void addPlayer(String name) {
         this.players.add(new Player(name));
     }
     
     /**
-     * Metodi kuvaa vuoron siirtymistä seuraavalle pelaajalle.
+     * Increases the turn counter.
+     */
+    public void nextTurn() {
+        this.turn += 1;
+        if (this.turn == 3) {
+            this.turn = 0;
+        }
+    }
+    
+    /**
+     * Increases the player counter.
      */
     public void nextPlayer() {
         this.player += 1;
@@ -65,15 +81,8 @@ public class Game {
         }
     }
     
-    public void nextTurn() {
-        this.turn += 1;
-        if (this.turn == 3) {
-            this.turn = 0;
-        }
-    }
-    
     /**
-     * Metodi heittää niitä noppia, joita ei ole asetettu lukituksi.
+     * Rolls all dice which are unlocked.
      */
     public void rollDice() {
         for (int i = 0; i < 5; i++) {
@@ -81,31 +90,50 @@ public class Game {
                 this.dice[i].roll();
             }
         }
+        nextTurn();
     }
     
     /**
-     * Metodi vapauttaa kaikki nopat, siis poistaa lukituksen.
+     * Unlocks all dice, so they can be rolled.
      */
     public void freeDice() {
         for (int i = 0; i < 5; i++) {
             this.dice[i].unlock();
         }
+        nextPlayer();
     }
     
     /**
-     * Metodi lisää pelaajan valitsemasta noppa-yhdistelmästä saadut pisteet pelaajalle.
-     * @param combination noppa-yhdistelmä
-     * @param player pelaaja
-     * @return pisteet
+     * Puts the score from a given dice combination to the score card of a player.
+     * @param combination Dice combination.
+     * @return Score.
      */
-    public int putScore(String combination, Player player) {
+    public int putScore(String combination) {
         int[] numbers = new int[5];
         for (int i = 0; i < 5; i++) {
             numbers[i] = dice[i].getValue();
         }
         int score = Calculator.count(numbers, combination);
-        player.getScores().setScore(score, combination);
+        this.players.get(this.player).getScores().setScore(score, combination);
         return score;
+    }
+    
+    /**
+     * Ends the game by setting the upper totals and totals in the score table of each player.
+     * @return Index number of the winner.
+     */
+    public int endGame() {
+        int winner = 0;
+        int score = 0;
+        for (int i = 0; i < this.players.size(); i++) {
+            this.players.get(i).getScores().setUpperTotal();
+            this.players.get(i).getScores().setTotal();
+            if (score < this.players.get(i).getScores().getScore("total")) {
+                winner = i;
+                score = this.players.get(i).getScores().getScore("total");
+            }
+        }
+        return winner;
     }
     
 }

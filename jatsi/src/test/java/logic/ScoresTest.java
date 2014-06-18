@@ -10,6 +10,11 @@ public class ScoresTest {
     public ScoresTest() {
         this.card = new Scores();
     }
+    
+    @Test
+    public void invalidInput() {
+        assertEquals(-1, Scores.combinationToInteger("input"));
+    }
 
     @Test
     public void scoresAreMinusOne() {
@@ -31,11 +36,6 @@ public class ScoresTest {
         assertEquals(-1, card.getScore("upper total"));
         assertEquals(-1, card.getScore("bonus"));
         assertEquals(-1, card.getScore("total"));
-    }
-    
-    @Test
-    public void invalidInputReturnsZero() {
-        assertEquals(0, card.getScore("input"));
     }
     
     @Test

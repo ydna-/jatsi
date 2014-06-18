@@ -3,15 +3,15 @@ package logic;
 import java.util.Arrays;
 
 /**
- * Luokka tarjoaa metodin pelaajan pisteiden laskemiseen eri noppayhdistelmillä.
+ * Contains a method for counting the player's points.
  */
 public class Calculator {
         
     /**
-     * Metodi laskee pelaajan saamat pisteet tietyllä noppayhdistelmällä.
-     * @param dice pelaajan nopat
-     * @param combination noppayhdistelmä
-     * @return pelaajan pisteet
+     * Counts the player's points with the given dice combination.
+     * @param dice Player's dice.
+     * @param combination Dice combination.
+     * @return Player's points.
      */
     public static int count(int[] dice, String combination) {
         Arrays.sort(dice);
@@ -37,10 +37,10 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee ykkösistä, kakkosista, kolmosista, nelosista, viitosista ja kuutosista saadut pisteet.
-     * @param dice pelaajan nopat
-     * @param number noppayhdistelmä
-     * @return pelaajan pisteet
+     * Counts the player's points from Ones, Twos, Threes, Fours, Fives and Sixes.
+     * @param dice Player's dice.
+     * @param number Dice combination (1-6).
+     * @return Player's points.
      */
     private static int countDice(int[] dice, int number) {
         int score = 0;
@@ -53,9 +53,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee parista saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Pair.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countPair(int[] dice) {
         int score = 0;
@@ -68,9 +68,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee kahdesta parista saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Two Pairs.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countTwoPairs(int[] dice) {
         if (dice[0] == dice[1] && dice[2] == dice[3] && dice[0] != dice[2]) {
@@ -85,9 +85,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee kolmesta samasta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Three of a Kind.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countThreeOfAKind(int[] dice) {
         if (dice[0] == dice[2] || dice[1] == dice[3] || dice[2] == dice[4]) {
@@ -98,9 +98,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee neljästä samasta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Four of a Kind.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countFourOfAKind(int[] dice) {
         if (dice[0] == dice[3] || dice[1] == dice[4]) {
@@ -111,9 +111,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee pienestä suorasta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Small Straight.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countSmallStraight(int[] dice) {
         for (int i = 0; i < 5; i++) {
@@ -125,9 +125,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee isosta suorasta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Large Straight.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countLargeStraight(int[] dice) {
         for (int i = 0; i < 5; i++) {
@@ -139,9 +139,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee täyskädestä saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Full House.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countFullHouse(int[] dice) {
         if (dice[0] == dice[2] && dice[3] == dice[4] && dice[0] != dice[4]) {
@@ -154,9 +154,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee sattumasta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Chance.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countChance(int[] dice) {
         int score = 0;
@@ -167,9 +167,9 @@ public class Calculator {
     }
     
     /**
-     * Metodi laskee Yatzysta saadut pisteet.
-     * @param dice pelaajan nopat
-     * @return pelaajan pisteet
+     * Counts the player's points from Yatzy.
+     * @param dice Player's dice.
+     * @return Player's points.
      */
     private static int countYatzy(int[] dice) {
         if (dice[0] == dice[4]) {

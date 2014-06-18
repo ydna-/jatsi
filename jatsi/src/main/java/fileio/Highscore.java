@@ -3,24 +3,24 @@ package fileio;
 import java.io.Serializable;
 
 /**
- * Luokka mallintaa jatsi-pelin high scorea.
+ * Represents a high score of the game.
  */
 public class Highscore implements Serializable, Comparable<Highscore> {
     
     /**
-     * Pelaajan nimi.
+     * Name of the player.
      */
     private final String name;
     
     /**
-     * Pelaajan yhteispisteet.
+     * Total points scored in the game.
      */
     private final int total;
     
     /**
-     * Konstruktori.
-     * @param name pelaajan nimi
-     * @param total pelaajan pisteet
+     * Creates a new high score with the given name and points.
+     * @param name Player's name.
+     * @param total Total points.
      */
     public Highscore(String name, int total) {
         this.name = name;
@@ -36,9 +36,8 @@ public class Highscore implements Serializable, Comparable<Highscore> {
     }
     
     @Override
-    public int compareTo(Highscore that) {
-        int thatTotal = that.getTotal();
-        return thatTotal - this.total;
+    public int compareTo(Highscore score) {
+        return score.getTotal() - this.total;
     }
     
 }

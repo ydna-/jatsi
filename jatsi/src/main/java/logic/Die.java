@@ -3,15 +3,22 @@ package logic;
 import java.util.Random;
 
 /**
- * Luokka mallintaa kuusisivuista noppaa jatsi-noppapelissä.
+ * Represents a six-sided die.
  */
 public class Die {
 
+    /**
+     * Value of the die.
+     */
     private int value;
+    
+    /**
+     * Status of the die, true if die can't be rolled.
+     */
     private boolean locked;
     
     /**
-     * Konstruktori.
+     * Creates a new die.
      */
     public Die() {
         this.value = 0;
@@ -19,44 +26,40 @@ public class Die {
     }
     
     /**
-     * Metodi asettaa nopan arvoksi satunnaisen kokonaisluvun väliltä 1-6.
+     * Sets the value of the die to a random integer between 1 and 6.
      */
     public void roll() {
         this.value = new Random().nextInt(6)+1;
     }
     
-    /**
-     * Metodi palauttaa nopan arvon.
-     * @return nopan arvo
-     */
     public int getValue() {
         return value;
     }
     
     /**
-     * Metodi asettaa nopan lukituksi.
+     * Locks the die.
      */
     public void lock() {
         this.locked = true;
     }
     
     /**
-     * Metodi vapauttaa nopan, siis poistaa lukituksen.
+     * Unlocks the die.
      */
     public void unlock() {
         this.locked = false;
     }
     
     /**
-     * Metodi vaihtaa nopan lukituksen totuusarvon.
+     * Toggles the lock status of the die.
      */
     public void toggle() {
         this.locked = !locked;
     }
     
     /**
-     * Metodi kertoo, onko noppa lukittu vai ei.
-     * @return lukittu?
+     * Returns the lock status of the die.
+     * @return true if locked
      */
     public boolean isLocked() {
         return this.locked;

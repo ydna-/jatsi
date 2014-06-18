@@ -1,23 +1,23 @@
 package logic;
 
 /**
- * Luokka mallintaa jatsi-noppapelin pelaajaa.
+ * Represents a player in the game.
  */
 public class Player {
     
     /**
-     * Pelaajan nimi.
+     * Name of the player.
      */
-    private String name;
+    private final String name;
     
     /**
-     * Pelaajan pisteet.
+     * Score table of the player.
      */
-    private Scores scores;
+    private final Scores scores;
     
     /**
-     * Konstruktori.
-     * @param name pelaajan nimi
+     * Creates a new player with the given name.
+     * @param name Player's name.
      */
     public Player(String name) {
         this.name = name;

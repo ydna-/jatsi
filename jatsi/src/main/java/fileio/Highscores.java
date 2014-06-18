@@ -4,33 +4,33 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Luokka tarjoaa metodeja, joilla päivitetään jatsi-noppapelin high score -listaa.
+ * Contains methods to update the high score list.
  */
 public class Highscores {
     
     /**
-     * High score -lista.
+     * The high score list.
      */
     private ArrayList<Highscore> highscores;
     
     /**
-     * Tiedosto, jossa high score -listaa säilytetään.
+     * The file where the high score list is saved.
      */
     private final String FILE;
-    
+        
     /**
-     * Output stream tiedostoon kirjoittamista varten.
-     */
-    ObjectOutputStream out = null;
-    
-    /**
-     * Input stream tiedostosta lukemista varten.
+     * Input stream for reading from the file.
      */
     ObjectInputStream in = null;
     
     /**
-     * Konstruktori.
-     * @param file tiedostonimi
+     * Output stream for writing into the file.
+     */
+    ObjectOutputStream out = null;
+    
+    /**
+     * Class constructor.
+     * @param file File name.
      */
     public Highscores(String file) {
         this.highscores = new ArrayList<>();
@@ -38,7 +38,8 @@ public class Highscores {
     }
     
     /**
-     * Metodi lukee high score -listan tiedostosta.
+     * Reads the high score list from the file given in the constructor.
+     * @throws Exception
      */
     private void readFile() throws Exception {
         in = new ObjectInputStream(new FileInputStream(FILE));
@@ -49,7 +50,8 @@ public class Highscores {
     }
     
     /**
-     * Metodi kirjoittaa high score -listan tiedostoon.
+     * Writes the high score list into the file given in the constructor.
+     * @throws Exception
      */
     private void writeFile() throws Exception {
         out = new ObjectOutputStream(new FileOutputStream(FILE));
@@ -60,43 +62,35 @@ public class Highscores {
     }
     
     /**
-     * Apumetodi high score -listan tyhjentämistä varten.
-     */
-    private void reset() throws Exception {
-        highscores = new ArrayList<>();
-        writeFile();
-    }
-
-    /**
-     * Metodi järjestää high score -listan.
+     * Sorts the high score list.
      */
     private void sort() {
         Collections.sort(highscores);
     }
     
     /**
-     * Metodi lisää uuden high scoren listaan.
-     * @param name pelaajan nimi
-     * @param score pelaajan pisteet
+     * Adds a new high score into the high score list and saves it.
+     * @param name Player's name.
+     * @param score Total points.
      */
     public void addScore(String name, int score) {
         try {
             readFile();
         } catch (Exception e) {
-            System.err.println("Error while loading high scores: " + e.getMessage());
+            System.err.println("Error while loading high scores! " + e.getMessage());
         }
         highscores.add(new Highscore(name, score));
         sort();
         try {
             writeFile();
         } catch (Exception e) {
-            System.err.println("Error while updating high scores: " + e.getMessage());
+            System.err.println("Error while updating high scores! " + e.getMessage());
         }
     }
     
     /**
-     * Metodi lukee high score -listan tiedostosta ja palauttaa sen.
-     * @return high score -lista
+     * Reads the high score list from the file and returns it.
+     * @return High score list.
      */
     public ArrayList<Highscore> getHighscores() {
         try {
