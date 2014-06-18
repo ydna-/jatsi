@@ -355,7 +355,12 @@ public class JatsiGUI extends javax.swing.JFrame {
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("upper total"), 6, i+1);
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("bonus"), 7, i+1);
                     Scorecard.setValueAt(jatsi.players.get(i).getScores().getScore("total"), 17, i+1);
-                    highscores.addScore(jatsi.players.get(i).getName(), jatsi.players.get(i).getScores().getScore("total"));
+                    try {
+                        highscores.addScore(jatsi.players.get(i).getName(), 
+                                jatsi.players.get(i).getScores().getScore("total"));
+                    } catch (Exception e) {
+                        javax.swing.JOptionPane.showMessageDialog(rootPane, "Error! " + e.getMessage());
+                    }
                 }
                 jTextField1.setText("Game over!");
                 jTextField2.setText(jatsi.players.get(winner).getName() + " won with " + 

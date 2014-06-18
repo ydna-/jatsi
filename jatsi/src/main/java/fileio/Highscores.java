@@ -77,14 +77,14 @@ public class Highscores {
         try {
             readFile();
         } catch (Exception e) {
-            System.err.println("Error while loading high scores! " + e.getMessage());
+            System.err.println("Error while loading high scores: " + e.getMessage());
         }
         highscores.add(new Highscore(name, score));
         sort();
         try {
             writeFile();
         } catch (Exception e) {
-            System.err.println("Error while updating high scores! " + e.getMessage());
+            System.err.println("Error while updating high scores: " + e.getMessage());
         }
     }
     
