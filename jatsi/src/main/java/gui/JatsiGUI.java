@@ -447,6 +447,9 @@ public class JatsiGUI extends javax.swing.JFrame {
                 Scorecard.setValueAt("", i, j);
             }
         }
+        for (int i = numberOfPlayers+1; i < 7; i++) {
+            Scorecard.getTableHeader().getColumnModel().getColumn(i).setHeaderValue("");
+        }
         String[] choices = {"Perusjatsi", "Pakkojatsi"};
         int response = javax.swing.JOptionPane.showOptionDialog(rootPane, 
                 "Please choose game mode.", "Game mode", 
