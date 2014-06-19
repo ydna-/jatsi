@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Contains methods to update the high score list.
+ * Contains methods to load and update the high score list of the game.
  */
 public class Highscores {
     
@@ -30,7 +30,7 @@ public class Highscores {
     
     /**
      * Class constructor.
-     * @param file File name.
+     * @param file Filename.
      */
     public Highscores(String file) {
         this.highscores = new ArrayList<>();
@@ -96,7 +96,7 @@ public class Highscores {
         try {
             readFile();
         } catch (Exception e) {
-            System.err.println("Error while loading high scores!" + e.getMessage());
+            System.err.println("Error while loading high scores: " + e.getMessage());
         }
         sort();
         return highscores;

@@ -3,7 +3,7 @@ package logic;
 import java.util.Arrays;
 
 /**
- * Contains a method for counting the player's points.
+ * Contains a method for counting the player's points during the game.
  */
 public class Calculator {
         

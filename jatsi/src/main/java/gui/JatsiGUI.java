@@ -296,9 +296,9 @@ public class JatsiGUI extends javax.swing.JFrame {
     
     private java.util.ArrayList<String> availableCombinations() {
         java.util.ArrayList<String> list = new java.util.ArrayList<>();
-            for (int i = 0; i < diceCombinations.length; i++) {
-                if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
-                    list.add(diceCombinations[i]);
+        for (int i = 0; i < diceCombinations.length; i++) {
+            if (jatsi.players.get(jatsi.player).getScores().getScore(diceCombinations[i]) == -1) {
+                list.add(diceCombinations[i]);
             }
         }
         return list;
@@ -322,11 +322,16 @@ public class JatsiGUI extends javax.swing.JFrame {
     
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         jatsi.rollDice();
-        jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
+        if (jatsi.turn != 2) {
+            jTextField2.setText("You have " + (3-jatsi.turn) + " rolls left.");
+        } else {
+            jTextField2.setText("You have 1 roll left.");
+        }
         setDieButtonIcons();
         if (jatsi.turn == 0) {
             rollButton.setEnabled(false);
             if (!jatsi.forced) {
+                jTextField2.setText("You have 0 rolls left.");
                 java.util.ArrayList<String> list = availableCombinations();
                 int index = indexOfBestCombination(list);
                 Object[] combinations = list.toArray();

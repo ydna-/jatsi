@@ -16,3 +16,4 @@
 * 12.06.2014 15.45-20.00 Bugeja fiksattu, pakkojatsi valmis.
 * 13.06.2014 11.00-13.00 Jar-tiedosto, Javadoc, dokumentointia.
 * 18.06.2014 15.00-20.00 Viimeistelyä.
+* 19.06.2014 17.00-18.00 Viimeinen palautus :)

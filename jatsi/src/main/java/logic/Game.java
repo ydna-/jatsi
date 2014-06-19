@@ -33,7 +33,7 @@ public class Game {
     public int counter;
     
     /**
-     * Is true if the game mode is forced.
+     * Game mode.
      */
     public boolean forced;
     
@@ -94,7 +94,7 @@ public class Game {
     }
     
     /**
-     * Unlocks all dice, so they can be rolled.
+     * Unlocks all dice at the end of each player's turn.
      */
     public void freeDice() {
         for (int i = 0; i < 5; i++) {
@@ -104,7 +104,7 @@ public class Game {
     }
     
     /**
-     * Puts the score from a given dice combination to the score card of a player.
+     * Puts the score from a given dice combination to the score card of the player.
      * @param combination Dice combination.
      * @return Score.
      */
